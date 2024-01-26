@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float drag;
     [SerializeField] private float acceleration;
     [SerializeField] private float steeringSpeed;
+    [SerializeField] private GameObject[] carAndWheel;
 
     private Vector2 input;
     private Rigidbody rb;
@@ -28,16 +29,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if(Vector3.Magnitude(input) > 0)
         {
+            rb.drag = 5;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(input.x, 0, input.y)), steeringSpeed * Time.deltaTime);
             rb.velocity = rb.velocity + ((transform.forward*3) * moveSpeed * Vector3.Magnitude(input) * Time.deltaTime);
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
         }
         else
         {
-            rb.velocity /= 1 + (drag * Time.deltaTime);
+            rb.drag = 0.5f;
         }
+        //carAndWheel[0].transform.localRotation = Quaternion.Euler(transform.forward - new Vector3(input.x,0,input.y)*20);
 
-        
+        //carAndWheel[3].transform.localRotation = Quaternion.Euler(0, input.x*30, 90);
+        //carAndWheel[4].transform.localRotation = Quaternion.Euler(0, input.x*30, 90);
 
     }
 }
