@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 input;
     private Rigidbody rb;
     private bool onIce;
-    private float initialDrag;
+    private float iceRotSpeed;
 
     public void playerMovement(CallbackContext context)
     {
@@ -25,35 +25,28 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        initialDrag = drag;
     }
 
     void Update()
     {
-        if(Vector3.Magnitude(input) > 0)
+        if(!onIce)
         {
-
-            if(!onIce) 
+            if (Vector3.Magnitude(input) > 0)
             {
-                drag = initialDrag;
                 rb.drag = 5;
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(input.x, 0, input.y)), steeringSpeed * Time.deltaTime);
+                rb.velocity = rb.velocity + ((transform.forward * 3) * moveSpeed * Vector3.Magnitude(input) * Time.deltaTime);
+                rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
             }
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(input.x, 0, input.y)), steeringSpeed * Time.deltaTime);
-            rb.velocity = rb.velocity + ((transform.forward*3) * moveSpeed * Vector3.Magnitude(input) * Time.deltaTime);
-            rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+            else
+            {
+                rb.drag = 3f;
+            }
         }
         else
         {
-            if(!onIce)
-            {
-                rb.drag = 0.5f;
-            }
-        }
-
-        if(onIce)
-        {
-            drag = 0;
-            rb.drag = 0;
+            iceRotSpeed -= 700 * Time.deltaTime;
+            transform.rotation *= Quaternion.Euler(0, iceRotSpeed * Time.deltaTime, 0);
         }
         //carAndWheel[0].transform.localRotation = Quaternion.Euler(transform.forward - new Vector3(input.x,0,input.y)*20);
 
@@ -64,6 +57,19 @@ public class PlayerMovement : MonoBehaviour
     public void SetOnIce(bool state)
     {
         onIce = state;
+        if(state)
+        {
+            CancelInvoke();
+            drag = 1;
+            rb.drag = 1;
+            iceRotSpeed = 1000;
+            Invoke(nameof(DisableIce), 1.5f);
+        }
+    }
+
+    private void DisableIce()
+    {
+        onIce = false;
     }
 }
 
