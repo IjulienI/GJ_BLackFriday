@@ -8,7 +8,6 @@ public class spawnPlayerSetupMenu : MonoBehaviour
     [SerializeField] private  PlayerInput input;
 
     private PlayerSetUpMenuScript menu;
-
     private void Start()
     {
         var rootMenu = GameObject.Find("PlayerSetupMenu");

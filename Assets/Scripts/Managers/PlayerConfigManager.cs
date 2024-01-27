@@ -16,7 +16,7 @@ public class PlayerConfigManager : MonoBehaviour
     private bool countDownStart;
     public static PlayerConfigManager Instance {get; private set;}
 
-    private void Awake() 
+    private void Start() 
     {
         if(Instance != null) 
         {
@@ -25,8 +25,7 @@ public class PlayerConfigManager : MonoBehaviour
         else 
         {
             Instance = this;
-            DontDestroyOnLoad(Instance);
-           
+            DontDestroyOnLoad(Instance);    
         }
     }
 
@@ -61,11 +60,14 @@ public class PlayerConfigManager : MonoBehaviour
 
         }
     }
+    public List<PlayerConfiguration> GetPlayerConfigs()
+    {
+        return playerConfigs;
+    }
+
 
     public void HandlePlayerJoin(PlayerInput pi)
     {
-        Debug.Log("Playe joined " + pi.playerIndex);
-
         if (!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex))
         {
             pi.transform.SetParent(transform);
@@ -93,10 +95,10 @@ public class PlayerConfigManager : MonoBehaviour
         }
         else if (countDown == 0)
         {
-            int randomLevel = Random.Range(2, levelNames.Length - 1);
-            SceneManager.LoadScene(randomLevel);
-            
-            print("launch game");
+            //int randomLevel = Random.Range(2, levelNames.Length - 1);
+            //SceneManager.LoadScene(randomLevel);
+            SceneManager.UnloadSceneAsync("MainMenu 1");
+            SceneManager.LoadScene("TestPlayers");
         }
         else
         {
