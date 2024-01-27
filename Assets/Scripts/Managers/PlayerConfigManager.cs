@@ -99,7 +99,7 @@ public class PlayerConfigManager : MonoBehaviour
             //SceneManager.LoadScene(randomLevel);
 
             SceneManager.UnloadSceneAsync("MainMenu 1");
-            SceneManager.LoadScene("TestPlayers");
+            SceneManager.LoadScene("Level2Temp");
         }
         else
         {
