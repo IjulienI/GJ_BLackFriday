@@ -6,7 +6,9 @@ public class spawnPlayerSetupMenu : MonoBehaviour
 {
     [SerializeField] private GameObject playerSetupMenuPrefab;
     public PlayerInput input;
-    private void Awake()
+
+
+    private void Start()
     {
         var rootMenu = GameObject.Find("PlayerSetupMenu");
         if (rootMenu != null)
@@ -15,6 +17,6 @@ public class spawnPlayerSetupMenu : MonoBehaviour
             input.uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
             menu.GetComponent<PlayerSetUpMenuScript>().SetPlayerIndex(input.playerIndex);
         }
-        print(rootMenu);
+
     }
 }
