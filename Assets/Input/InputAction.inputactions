@@ -2,34 +2,6 @@
     "name": "InputAction",
     "maps": [
         {
-            "name": "PlayerMovement",
-            "id": "7cbfaa22-f677-4bfe-8171-2c55e71a6625",
-            "actions": [
-                {
-                    "name": "Movement",
-                    "type": "Value",
-                    "id": "f186adc1-6d65-4245-acbc-b94f95e2573c",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "bc7f85d0-1e25-4b0e-bad5-3971d6cf4d43",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
             "name": "UI",
             "id": "9b54da73-530a-48b7-9a71-c837e5e56104",
             "actions": [
@@ -41,6 +13,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Movement",
+                    "type": "PassThrough",
+                    "id": "39d5b62d-ffa8-46cc-b345-ea7452449a3e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Interact",
@@ -55,6 +36,33 @@
                     "name": "Cancel",
                     "type": "Button",
                     "id": "68e63844-33ea-499c-8187-fd330f1db0de",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AttackLeft",
+                    "type": "Button",
+                    "id": "7ddaa1f4-a65f-46c2-b90e-9780aae9e28e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AttackRight",
+                    "type": "Button",
+                    "id": "df97071a-e4a7-4e11-b623-34793a2a4d96",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "shoppingList",
+                    "type": "Button",
+                    "id": "1ed8df99-45ff-455e-ab9a-c10e18d4eafe",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -136,6 +144,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "21498003-ddf3-43ac-bae5-9f54d27deca2",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "36586f96-f4ca-4a46-b8d5-f48b70d0d1d8",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f77480a4-a936-4f38-ae97-9ee3e9631556",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b9b02852-3c65-4f24-9cac-e87c3084b213",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "shoppingList",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

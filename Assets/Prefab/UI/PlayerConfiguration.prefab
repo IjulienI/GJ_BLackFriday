@@ -60,10 +60,6 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: f186adc1-6d65-4245-acbc-b94f95e2573c
-    m_ActionName: PlayerMovement/Movement[/XInputControllerWindows/leftStick]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 382efec8-e556-4b42-9375-7e8233ad362d
     m_ActionName: UI/Select
   - m_PersistentCalls:
@@ -74,6 +70,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 68e63844-33ea-499c-8187-fd330f1db0de
     m_ActionName: UI/CancelAction[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 39d5b62d-ffa8-46cc-b345-ea7452449a3e
+    m_ActionName: UI/Movement[/XInputControllerWindows/leftStick,/XInputControllerWindows1/leftStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7ddaa1f4-a65f-46c2-b90e-9780aae9e28e
+    m_ActionName: UI/Attack
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI

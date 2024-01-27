@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleText: {fileID: 1346369716765680431}
+  oldName: {fileID: 8561104434873121678}
   characterImage: {fileID: 567941637218532578}
   readySlider: {fileID: 6495683058969995422}
   characterUI:
