@@ -66,6 +66,7 @@ Transform:
   - {fileID: 7450839044675012651}
   - {fileID: 2298486996142743804}
   - {fileID: 4415660291122844081}
+  - {fileID: 3085913321607281509}
   m_Father: {fileID: 6612033256773913870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &32672706451438963
@@ -84,6 +85,8 @@ MonoBehaviour:
   - {fileID: 7543791050843797198}
   - {fileID: 391632963650022913}
   - {fileID: 308667083126043385}
+  minEventsRemanence: 15
+  maxEventsRemanence: 30
 --- !u!1 &4589935269111842885
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +136,53 @@ MonoBehaviour:
   - {fileID: 0}
   minClosedFride: 0
   maxClosedFride: 2
+--- !u!1 &5528857985543650620
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3085913321607281509}
+  - component: {fileID: 8156352647499738179}
+  m_Layer: 0
+  m_Name: LightsOffEvent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3085913321607281509
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5528857985543650620}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -12.375906, y: 6.8267784, z: 5.341528}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9090627841795008550}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8156352647499738179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5528857985543650620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47db510e863ad148b2bb1c28336bbe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lights: []
+  minEventTime: 15
+  maxEventTime: 30
 --- !u!1 &6708096827907793555
 GameObject:
   m_ObjectHideFlags: 0
