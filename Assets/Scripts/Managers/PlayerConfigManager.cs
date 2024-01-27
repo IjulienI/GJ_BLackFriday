@@ -4,11 +4,13 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerConfigManager : MonoBehaviour
 {
     private List<PlayerConfiguration> playerConfigs = new List<PlayerConfiguration>();
     [SerializeField] TextMeshProUGUI countDownText;
+    [SerializeField] string[] levelNames;
 
     private int countDown = 4;
     private bool countDownStart;
@@ -91,6 +93,9 @@ public class PlayerConfigManager : MonoBehaviour
         }
         else if (countDown == 0)
         {
+            int randomLevel = Random.Range(2, levelNames.Length - 1);
+            SceneManager.LoadScene(randomLevel);
+            
             print("launch game");
         }
         else
