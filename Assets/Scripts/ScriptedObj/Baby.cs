@@ -32,6 +32,10 @@ public class Baby : MonoBehaviour
 
         if(hit.distance < minDist && hit.collider != null)
         {
+            if(hit.collider.tag == "Player")
+            {
+                AttachBaby(hit.collider.gameObject);
+            }
             if(Random.Range(0,2) == 0)
             {
                 transform.rotation *= Quaternion.Euler(0, angle, 0);
@@ -47,15 +51,20 @@ public class Baby : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            Destroy(GetComponent<SphereCollider>());
-            CancelInvoke();
-            playerTouched = collision.gameObject.GetComponent<PlayerMovement>();
-            speed = 0;
-            transform.SetParent(playerTouched.transform.GetChild(0).transform);
-            transform.localPosition = Vector3.zero;
-            playerTouched.BabyEvent(true);
-            Invoke(nameof(DestroyObject), malusTime);
+            AttachBaby(collision.gameObject);
         }
+    }
+
+    private void AttachBaby(GameObject player)
+    {
+        Destroy(GetComponent<SphereCollider>());
+        CancelInvoke();
+        playerTouched = player.GetComponent<PlayerMovement>();
+        speed = 0;
+        transform.SetParent(playerTouched.transform.GetChild(0).transform);
+        transform.localPosition = Vector3.zero;
+        playerTouched.BabyEvent(true);
+        Invoke(nameof(DestroyObject), malusTime);
     }
 
     public void DestroyObject()

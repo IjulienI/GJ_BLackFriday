@@ -10,7 +10,7 @@ public class Fridge : MonoBehaviour
     {
         open = true;
         GetComponent<MeshRenderer>().material.color = Color.green;
-        var iceChild = Instantiate(ice, new Vector3(transform.position.x +5.2f,transform.position.y - transform.localScale.y *2,transform.position.z), Quaternion.identity);
+        var iceChild = Instantiate(ice, new Vector3(transform.position.x +7f,transform.position.y+.1f, transform.position.z), Quaternion.identity);
         iceChild.transform.parent = gameObject.transform;
     }
     public bool GetOpen()
