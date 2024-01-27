@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[CreateAssetMenu]
 public class Item : ScriptableObject
 {
+    
     [SerializeField] private GameObject sprite;
-    [SerializeField] private float score;
+    [SerializeField] private float value;
 }

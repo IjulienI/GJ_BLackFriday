@@ -65,7 +65,6 @@ Transform:
   m_Children:
   - {fileID: 7450839044675012651}
   - {fileID: 2298486996142743804}
-  - {fileID: 4415660291122844081}
   - {fileID: 3085913321607281509}
   m_Father: {fileID: 6612033256773913870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -84,9 +83,9 @@ MonoBehaviour:
   events:
   - {fileID: 7543791050843797198}
   - {fileID: 391632963650022913}
-  - {fileID: 308667083126043385}
-  minEventsRemanence: 15
-  maxEventsRemanence: 30
+  - {fileID: 8156352647499738179}
+  minEventsRemanence: 10
+  maxEventsRemanence: 15
 --- !u!1 &4589935269111842885
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,50 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1b3cc2707d19654b852ae5b39c93bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &6886063232030313885
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4415660291122844081}
-  - component: {fileID: 308667083126043385}
-  m_Layer: 0
-  m_Name: CarWashEvent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4415660291122844081
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6886063232030313885}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.588503, y: 4.0741367, z: -20.730463}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 9090627841795008550}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &308667083126043385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6886063232030313885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91ed90b4fc4fda447b1e847f60d95e29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  train: {fileID: 7884235178670094613, guid: bc31a92e64990b04f8c1450e6537c382, type: 3}
 --- !u!1 &7740883754858702820
 GameObject:
   m_ObjectHideFlags: 0
