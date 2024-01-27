@@ -1,6 +1,4 @@
-using System.Drawing;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerMovement : MonoBehaviour
