@@ -11,7 +11,7 @@ public class PlayerSetUpMenuScript : MonoBehaviour
     [SerializeField] private Sprite[] characterUI;
 
     private int playerIndex, characterSelected;
-    private float ignoreInputTime = 1.5f;
+    private float ignoreInputTime = 0.5f;
     private bool inputEnable, playerReady;
 
     public void SetPlayerIndex(PlayerInput pi) 
