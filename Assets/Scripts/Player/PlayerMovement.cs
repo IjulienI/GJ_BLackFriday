@@ -103,12 +103,16 @@ public class PlayerMovement : MonoBehaviour
                         steeringSpeed -= Time.deltaTime;
                     }
                 }
-               
             }
             else
             {
+
                 rb.drag = 3f;
             }
+            float angleToGlobalForward = Vector3.SignedAngle(new Vector3(input.x, 0, input.y), transform.forward, Vector3.up);
+            float normalizedAngle = angleToGlobalForward / 180f;
+            float targetTiltAngle = 50 * -normalizedAngle;
+            carAndWheel[0].transform.localRotation = Quaternion.Slerp(carAndWheel[0].transform.localRotation, Quaternion.Euler(-targetTiltAngle, 90, 0), steeringSpeed / 2 * Time.deltaTime);
         }
         else
         {

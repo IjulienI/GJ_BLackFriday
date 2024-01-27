@@ -135,11 +135,9 @@ MonoBehaviour:
   acceleration: 0
   steeringSpeed: 2
   carAndWheel:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 3746909042487782044}
+  - {fileID: 4510162038650834485}
+  - {fileID: 2536380558483648264}
   attackCooldown: 0.4
 --- !u!114 &5183658113827395977
 MonoBehaviour:
@@ -222,8 +220,23 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f06acabb6f2dc49499351e3206910dc7, type: 3}
+--- !u!1 &2536380558483648264 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7201870911988025147, guid: f06acabb6f2dc49499351e3206910dc7, type: 3}
+  m_PrefabInstance: {fileID: 4557317633596446669}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3746909042487782044 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f06acabb6f2dc49499351e3206910dc7, type: 3}
+  m_PrefabInstance: {fileID: 4557317633596446669}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4085997691746562086 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f06acabb6f2dc49499351e3206910dc7, type: 3}
+  m_PrefabInstance: {fileID: 4557317633596446669}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4510162038650834485 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 119776705876318712, guid: f06acabb6f2dc49499351e3206910dc7, type: 3}
   m_PrefabInstance: {fileID: 4557317633596446669}
   m_PrefabAsset: {fileID: 0}
