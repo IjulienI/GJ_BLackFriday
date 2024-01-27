@@ -97,6 +97,7 @@ public class PlayerConfigManager : MonoBehaviour
         {
             //int randomLevel = Random.Range(2, levelNames.Length - 1);
             //SceneManager.LoadScene(randomLevel);
+
             SceneManager.UnloadSceneAsync("MainMenu 1");
             SceneManager.LoadScene("TestPlayers");
         }
