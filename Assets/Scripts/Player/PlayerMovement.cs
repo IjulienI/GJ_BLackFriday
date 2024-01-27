@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
 
@@ -13,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private bool onIce;
     private float iceRotSpeed;
+    private float baseMoveSpeed;
 
     public void playerMovement(CallbackContext context)
     {
@@ -22,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        baseMoveSpeed = moveSpeed;
     }
 
     void Update()
@@ -66,6 +69,18 @@ public class PlayerMovement : MonoBehaviour
     private void DisableIce()
     {
         onIce = false;
+    }
+
+    public void BabyEvent(bool statu)
+    {
+        if (statu)
+        {
+            moveSpeed /= 2;
+        }
+        else
+        {
+            moveSpeed = baseMoveSpeed;
+        }
     }
 }
 

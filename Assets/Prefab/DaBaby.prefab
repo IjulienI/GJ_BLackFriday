@@ -118,8 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f5ea53dcc90a947a18843d049bd362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 11
+  speed: 15
   angle: 60
-  minDist: 1.7
+  minDist: 2
   minTime: 15
   maxTime: 30
+  malusTime: 5

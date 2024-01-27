@@ -6,13 +6,19 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    [SerializeField] List<Events> events;
+    [Header("References")]
+    [SerializeField] private List<Events> events;
+    [Header("Settings")]
+    [SerializeField] private float minEventsRemanence;
+    [SerializeField] private float maxEventsRemanence;
 
     private Events lastEvent;
+    private float TimeBeforeEvent;
 
     private void Start()
     {
-        Invoke(nameof(StartEvent), 1f);
+        TimeBeforeEvent = Random.Range(minEventsRemanence, maxEventsRemanence);
+        Invoke(nameof(StartEvent), TimeBeforeEvent);
     }
 
     private void StartEvent()
@@ -42,6 +48,7 @@ public class EventManager : MonoBehaviour
                 }
             }
         }
-        Invoke(nameof(StartEvent), 5f);
+        TimeBeforeEvent = Random.Range(minEventsRemanence, maxEventsRemanence);
+        Invoke(nameof(StartEvent), TimeBeforeEvent);
     }
 }
