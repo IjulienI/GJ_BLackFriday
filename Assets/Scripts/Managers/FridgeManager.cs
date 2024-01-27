@@ -18,7 +18,6 @@ public class FridgeManager : MonoBehaviour
 
     public void ChoiceFriges()
     {
-        GameManager.Instance.SetEarthQuake(false);
         int closedFridge = Random.Range(minClosedFride, maxClosedFride);
         for (int i = closedFridge; i < fridges.Count; i++)
         {

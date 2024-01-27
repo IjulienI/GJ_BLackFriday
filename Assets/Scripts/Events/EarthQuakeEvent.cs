@@ -6,7 +6,6 @@ public class EarthQuakeEvent : Events
 {
     public override void StartEvent()
     {
-        GameManager.Instance.SetEarthQuake(false);
         FridgeManager.instance.ChoiceFriges();
     }
 }
