@@ -23,9 +23,10 @@ public class EventManager : MonoBehaviour
             eventTemp = events[Random.Range(0, events.Count)];
             if(eventTemp != lastEvent )
             {
+                Debug.Log(eventTemp.name);
                 if(eventTemp.name == "EarthQuakeEvent")
                 {
-                    if (GameManager.Instance.GetEarthQuake())
+                    if(GameManager.Instance.CanEarthQuake())
                     {
                         lastEvent = eventTemp;
                         eventTemp.StartEvent();
@@ -41,6 +42,6 @@ public class EventManager : MonoBehaviour
                 }
             }
         }
-        Invoke(nameof(StartEvent), 2f);
+        Invoke(nameof(StartEvent), 5f);
     }
 }

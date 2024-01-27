@@ -21,7 +21,7 @@ public class Baby : MonoBehaviour
         Physics.Raycast(transform.position, transform.forward, out hit);
         Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red,0.1f);
 
-        if(hit.distance < minDist)
+        if(hit.distance < minDist && hit.collider != null)
         {
             if(hit.collider.tag == "Player")
             {

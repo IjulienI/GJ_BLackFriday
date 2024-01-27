@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
     [SerializeField] private float maxSpeed;
-    [SerializeField] private float drag;
     [SerializeField] private float acceleration;
     [SerializeField] private float steeringSpeed;
     [SerializeField] private GameObject[] carAndWheel;
@@ -60,7 +59,6 @@ public class PlayerMovement : MonoBehaviour
         if(state)
         {
             CancelInvoke();
-            drag = 1;
             rb.drag = 1;
             iceRotSpeed = 1000;
             Invoke(nameof(DisableIce), 1.5f);

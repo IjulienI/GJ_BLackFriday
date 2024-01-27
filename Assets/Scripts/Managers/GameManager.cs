@@ -5,18 +5,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    private bool canEarthQuake = true;
 
     private void Awake()
     {
         Instance = this;
     }
-    public void SetEarthQuake(bool statu)
+
+    public bool CanEarthQuake()
     {
-        canEarthQuake = statu;
-    }
-    public bool GetEarthQuake()
-    {
-        return canEarthQuake;
+        return GameObject.FindObjectsOfType<SlideFloor>().Length == 0;
     }
 }

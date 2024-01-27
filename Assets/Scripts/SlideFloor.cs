@@ -33,6 +33,7 @@ public class SlideFloor : MonoBehaviour
         }
         if (destroy)
         {   
+            transform.parent.transform.parent.GetComponent<Fridge>().SetOpen(false);
             transform.localScale -= new Vector3(5 * Time.deltaTime, 5 * Time.deltaTime, 5 * Time.deltaTime);
         }
     }
