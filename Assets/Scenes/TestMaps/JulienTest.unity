@@ -3507,7 +3507,7 @@ MonoBehaviour:
   fridges:
   - {fileID: 43130607}
   - {fileID: 2012796885}
-  minClosedFride: 1
+  minClosedFride: 0
   maxClosedFride: 2
 --- !u!4 &1618269487
 Transform:
