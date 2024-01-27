@@ -80,7 +80,7 @@ MonoBehaviour:
     m_ActionName: UI/Attack
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &4761063121790867194

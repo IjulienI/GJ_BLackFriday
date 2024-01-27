@@ -28,6 +28,18 @@ public class PlayerInputHandler : MonoBehaviour
         {
             OnMove(input.actions["Movement"].ReadValue<Vector2>());
         }
+        if (input.actions["AttackRight"].triggered)
+        {
+            movement.AttackLeft();
+        }
+        if (input.actions["AttackLeft"].triggered)
+        {
+            movement.AttackRight();
+        }
+        if (input.actions["Interact"].triggered)
+        {
+            movement.InputBoost();
+        }
 
     }
 

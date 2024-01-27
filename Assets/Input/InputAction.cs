@@ -38,7 +38,7 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Movement"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""39d5b62d-ffa8-46cc-b345-ea7452449a3e"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -64,9 +64,18 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Attack"",
+                    ""name"": ""AttackLeft"",
                     ""type"": ""Button"",
                     ""id"": ""7ddaa1f4-a65f-46c2-b90e-9780aae9e28e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AttackRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""df97071a-e4a7-4e11-b623-34793a2a4d96"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -165,11 +174,22 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""36586f96-f4ca-4a46-b8d5-f48b70d0d1d8"",
-                    ""path"": """",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Attack"",
+                    ""action"": ""AttackLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f77480a4-a936-4f38-ae97-9ee3e9631556"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -184,7 +204,8 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
         m_UI_Movement = m_UI.FindAction("Movement", throwIfNotFound: true);
         m_UI_Interact = m_UI.FindAction("Interact", throwIfNotFound: true);
         m_UI_Cancel = m_UI.FindAction("Cancel", throwIfNotFound: true);
-        m_UI_Attack = m_UI.FindAction("Attack", throwIfNotFound: true);
+        m_UI_AttackLeft = m_UI.FindAction("AttackLeft", throwIfNotFound: true);
+        m_UI_AttackRight = m_UI.FindAction("AttackRight", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -250,7 +271,8 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_Movement;
     private readonly InputAction m_UI_Interact;
     private readonly InputAction m_UI_Cancel;
-    private readonly InputAction m_UI_Attack;
+    private readonly InputAction m_UI_AttackLeft;
+    private readonly InputAction m_UI_AttackRight;
     public struct UIActions
     {
         private @InputPlayer m_Wrapper;
@@ -259,7 +281,8 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_UI_Movement;
         public InputAction @Interact => m_Wrapper.m_UI_Interact;
         public InputAction @Cancel => m_Wrapper.m_UI_Cancel;
-        public InputAction @Attack => m_Wrapper.m_UI_Attack;
+        public InputAction @AttackLeft => m_Wrapper.m_UI_AttackLeft;
+        public InputAction @AttackRight => m_Wrapper.m_UI_AttackRight;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -281,9 +304,12 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
             @Cancel.started += instance.OnCancel;
             @Cancel.performed += instance.OnCancel;
             @Cancel.canceled += instance.OnCancel;
-            @Attack.started += instance.OnAttack;
-            @Attack.performed += instance.OnAttack;
-            @Attack.canceled += instance.OnAttack;
+            @AttackLeft.started += instance.OnAttackLeft;
+            @AttackLeft.performed += instance.OnAttackLeft;
+            @AttackLeft.canceled += instance.OnAttackLeft;
+            @AttackRight.started += instance.OnAttackRight;
+            @AttackRight.performed += instance.OnAttackRight;
+            @AttackRight.canceled += instance.OnAttackRight;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -300,9 +326,12 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
             @Cancel.started -= instance.OnCancel;
             @Cancel.performed -= instance.OnCancel;
             @Cancel.canceled -= instance.OnCancel;
-            @Attack.started -= instance.OnAttack;
-            @Attack.performed -= instance.OnAttack;
-            @Attack.canceled -= instance.OnAttack;
+            @AttackLeft.started -= instance.OnAttackLeft;
+            @AttackLeft.performed -= instance.OnAttackLeft;
+            @AttackLeft.canceled -= instance.OnAttackLeft;
+            @AttackRight.started -= instance.OnAttackRight;
+            @AttackRight.performed -= instance.OnAttackRight;
+            @AttackRight.canceled -= instance.OnAttackRight;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -326,6 +355,7 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
-        void OnAttack(InputAction.CallbackContext context);
+        void OnAttackLeft(InputAction.CallbackContext context);
+        void OnAttackRight(InputAction.CallbackContext context);
     }
 }

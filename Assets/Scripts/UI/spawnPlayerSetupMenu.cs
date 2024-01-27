@@ -1,14 +1,20 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
+using UnityEngine.Windows;
 
 public class spawnPlayerSetupMenu : MonoBehaviour
 {
     [SerializeField] private GameObject playerSetupMenuPrefab;
-    [SerializeField] private  PlayerInput input;
+    [SerializeField] private PlayerInput input;
 
     private PlayerSetUpMenuScript menu;
     private void Start()
+    {
+        input = GetComponent<PlayerInput>(); 
+        Invoke(nameof(refSetup), 0.2f);       
+    }
+    private void refSetup()
     {
         var rootMenu = GameObject.Find("PlayerSetupMenu");
         if (rootMenu != null)
@@ -18,48 +24,54 @@ public class spawnPlayerSetupMenu : MonoBehaviour
             input.uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
             menu.SetPlayerIndex(input);
         }
-
     }
-
     private void Update()
     {
         if (input.actions["Interact"].triggered)
         {
-            if(menu.gameObject.activeInHierarchy)
+            if (menu != null)
             {
-                menu.ReadyPlayer();
+                if (menu.gameObject.activeInHierarchy)
+                {
+                    menu.ReadyPlayer();
+                }
+                else
+                {
+                    menu.gameObject.SetActive(true);
+                }
             }
-            else
-            {
-                menu.gameObject.SetActive(true);
-            }
-
         }
 
         if(input.actions["Navigate"].triggered)
         {
-            if(menu.gameObject.activeInHierarchy)
+            if(menu != null)
             {
-                if(input.actions["Navigate"].ReadValue<Vector2>().x < 0)
+                if (menu.gameObject.activeInHierarchy)
                 {
-                    menu.SelectCharacterLeft();
+                    if (input.actions["Navigate"].ReadValue<Vector2>().x < 0)
+                    {
+                        menu.SelectCharacterLeft();
+                    }
+                    if (input.actions["Navigate"].ReadValue<Vector2>().x > 0)
+                    {
+                        menu.SelectCharacterRight();
+                    }
                 }
-                if(input.actions["Navigate"].ReadValue<Vector2>().x > 0)
+                else
                 {
-                    menu.SelectCharacterRight();
+                    menu.gameObject.SetActive(true);
                 }
-               
             }
-            else
-            {
-                menu.gameObject.SetActive(true);
-            }
+
         }
         if (input.actions["Cancel"].triggered)
         {
-            if(menu.gameObject.activeInHierarchy)
+            if (menu != null)
             {
-                menu.NotReady();
+                if (menu.gameObject.activeInHierarchy)
+                {
+                    menu.NotReady();
+                }
             }
         }
     }

@@ -8,13 +8,13 @@ public class InitializeLevel : MonoBehaviour
     private int playerLenght;
     void Start()
     {
-        playerLenght = PlayerConfigManager.Instance.GetPlayerConfigs().Count-1;
+        playerLenght = PlayerConfigManager.Instance.GetPlayerConfigs().Count;
         Invoke(nameof(GetPlayerRefs), 0.1f);
     }
     private void GetPlayerRefs()
     {
         var playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs();
-        for (int i = 0; i <= playerLenght; i++)
+        for (int i = 0; i < playerLenght; i++)
         {
 
             if (playerConfigs[i] != null)
