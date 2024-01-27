@@ -80,6 +80,15 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""shoppingList"",
+                    ""type"": ""Button"",
+                    ""id"": ""1ed8df99-45ff-455e-ab9a-c10e18d4eafe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -192,6 +201,17 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
                     ""action"": ""AttackRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b9b02852-3c65-4f24-9cac-e87c3084b213"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""shoppingList"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -206,6 +226,7 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
         m_UI_Cancel = m_UI.FindAction("Cancel", throwIfNotFound: true);
         m_UI_AttackLeft = m_UI.FindAction("AttackLeft", throwIfNotFound: true);
         m_UI_AttackRight = m_UI.FindAction("AttackRight", throwIfNotFound: true);
+        m_UI_shoppingList = m_UI.FindAction("shoppingList", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -273,6 +294,7 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_Cancel;
     private readonly InputAction m_UI_AttackLeft;
     private readonly InputAction m_UI_AttackRight;
+    private readonly InputAction m_UI_shoppingList;
     public struct UIActions
     {
         private @InputPlayer m_Wrapper;
@@ -283,6 +305,7 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
         public InputAction @Cancel => m_Wrapper.m_UI_Cancel;
         public InputAction @AttackLeft => m_Wrapper.m_UI_AttackLeft;
         public InputAction @AttackRight => m_Wrapper.m_UI_AttackRight;
+        public InputAction @shoppingList => m_Wrapper.m_UI_shoppingList;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -310,6 +333,9 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
             @AttackRight.started += instance.OnAttackRight;
             @AttackRight.performed += instance.OnAttackRight;
             @AttackRight.canceled += instance.OnAttackRight;
+            @shoppingList.started += instance.OnShoppingList;
+            @shoppingList.performed += instance.OnShoppingList;
+            @shoppingList.canceled += instance.OnShoppingList;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -332,6 +358,9 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
             @AttackRight.started -= instance.OnAttackRight;
             @AttackRight.performed -= instance.OnAttackRight;
             @AttackRight.canceled -= instance.OnAttackRight;
+            @shoppingList.started -= instance.OnShoppingList;
+            @shoppingList.performed -= instance.OnShoppingList;
+            @shoppingList.canceled -= instance.OnShoppingList;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -357,5 +386,6 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
         void OnCancel(InputAction.CallbackContext context);
         void OnAttackLeft(InputAction.CallbackContext context);
         void OnAttackRight(InputAction.CallbackContext context);
+        void OnShoppingList(InputAction.CallbackContext context);
     }
 }
