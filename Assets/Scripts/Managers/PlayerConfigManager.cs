@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerConfigManager : MonoBehaviour
 {
-    private List<PlayerConfiguration> playerConfigs;
+    private List<PlayerConfiguration> playerConfigs = new List<PlayerConfiguration>();
     [SerializeField] int MaxPlayer = 4;
 
     public static PlayerConfigManager Instance {get; private set;}
@@ -20,7 +20,7 @@ public class PlayerConfigManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(Instance);
-            playerConfigs = new List<PlayerConfiguration>();
+           
         }
     }
 
@@ -41,9 +41,12 @@ public class PlayerConfigManager : MonoBehaviour
 
     public void HandlePlayerJoin(PlayerInput pi)
     {
-        Debug.Log("Playe joined" + pi.playerIndex);
-        
-        if(!playerConfigs.Any(p=> p.PlayerIndex == pi.playerIndex))
+        Debug.Log("Playe joined " + pi.playerIndex);
+        if(pi.playerIndex != null)
+        {
+            print("exist");
+        }
+        if (!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex))
         {
             pi.transform.SetParent(transform);
             playerConfigs.Add(new PlayerConfiguration(pi));
