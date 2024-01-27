@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using static UnityEngine.InputSystem.InputAction;
 public class PlayerSetUpMenuScript : MonoBehaviour
@@ -13,10 +14,10 @@ public class PlayerSetUpMenuScript : MonoBehaviour
     private float ignoreInputTime = 1.5f;
     private bool inputEnable, playerReady;
 
-    public void SetPlayerIndex(int pi) 
+    public void SetPlayerIndex(PlayerInput pi) 
     {
-        playerIndex = pi;
-        titleText.SetText("Player " + (pi + 1));
+        playerIndex = pi.playerIndex;
+        titleText.SetText("Player " + (pi.playerIndex + 1));
         ignoreInputTime = Time.time + ignoreInputTime;
     }
 
@@ -43,11 +44,11 @@ public class PlayerSetUpMenuScript : MonoBehaviour
         }
     }
 
-    public void SelectCharacter(CallbackContext context)
+
+    public void SelectCharacterLeft()
     {
-        if (!inputEnable) { return; }
-        if (context.ReadValue<Vector2>().x > 0)
-        {
+        if (!inputEnable || playerReady) { return; }
+
             if(characterSelected >= characterUI.Length-1)
             {
                 characterSelected = 0;
@@ -57,28 +58,47 @@ public class PlayerSetUpMenuScript : MonoBehaviour
                 characterSelected += 1;
             }
 
-        }
-        else if(context.ReadValue<Vector2>().x < 0)
-        {
-            if(characterSelected <= 0)
-            {
-                characterSelected = characterUI.Length -1;
-            }
-            else
-            {
-                characterSelected -= 1;
-            }
-        }
+        characterImage.sprite = characterUI[characterSelected];
+        PlayerConfigManager.Instance.SetPlayerCharacter(playerIndex, characterSelected);
+    }
+    public void SelectCharacterRight()
+    {
+        if (!inputEnable || playerReady) { return; }
 
+        if (characterSelected <= 0)
+        {
+            characterSelected = characterUI.Length - 1;
+        }
+        else
+        {
+            characterSelected -= 1;
+        }
         characterImage.sprite = characterUI[characterSelected];
         PlayerConfigManager.Instance.SetPlayerCharacter(playerIndex, characterSelected);
     }
 
     public void ReadyPlayer()
     {
-        if(!inputEnable) { return; }
+            if (!inputEnable) { return; }
 
-        playerReady = true;
-        PlayerConfigManager.Instance.ReadyPlayer(playerIndex);
+            playerReady = true;
+            PlayerConfigManager.Instance.ReadyPlayer(playerIndex, true);
+    }
+
+    public void NotReady()
+    {
+        if (!inputEnable) { return; }
+
+        if(playerReady)
+        {
+            playerReady = false;
+            PlayerConfigManager.Instance.ReadyPlayer(playerIndex, false);
+        }
+        else
+        {
+            PlayerConfigManager.Instance.HandlePlayerQuit(playerIndex);
+            gameObject.SetActive(false);
+        }
+
     }
 }
