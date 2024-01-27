@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +9,10 @@ public class PlayerConfigManager : MonoBehaviour
 {
     private List<PlayerConfiguration> playerConfigs = new List<PlayerConfiguration>();
     [SerializeField] int MaxPlayer = 4;
+    [SerializeField] TextMeshProUGUI countDownText;
 
+    private int countDown = 4;
+    private bool countDownStart;
     public static PlayerConfigManager Instance {get; private set;}
 
     private void Awake() 
@@ -26,33 +31,77 @@ public class PlayerConfigManager : MonoBehaviour
 
     public void SetPlayerCharacter(int index, int character) 
     {
-        playerConfigs[index].CharacterSelection = character;
+        if (playerConfigs[index] != null)
+        {
+            playerConfigs[index].CharacterSelection = character;
+        }
     }
 
-    public void ReadyPlayer(int index) 
+    public void ReadyPlayer(int index, bool ready) 
     {
-        playerConfigs[index].IsReady = true;
-
-        if(playerConfigs.Count <= MaxPlayer && playerConfigs.Count >= 2 && playerConfigs.All(p => p.IsReady == true)) 
+        if (playerConfigs[index] != null)
         {
-            //CE QUE TU VEUX FAIRE UNE FOIS QUE TOUS LES JOUEURS SONT READY
+            playerConfigs[index].IsReady = ready;
+
+            bool allPlayersReady = playerConfigs
+                   .Where(player => player != null)
+                   .All(player => player.IsReady);
+        
+            if (allPlayersReady)
+            {
+                CountDownStart();
+            }
+            else
+            {
+                CancelInvoke(nameof(CountDownStart));
+                countDownText.text = "";
+                countDown = 4;
+            }
+
         }
     }
 
     public void HandlePlayerJoin(PlayerInput pi)
     {
         Debug.Log("Playe joined " + pi.playerIndex);
-        if(pi.playerIndex != null)
-        {
-            print("exist");
-        }
+
         if (!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex))
         {
             pi.transform.SetParent(transform);
-            playerConfigs.Add(new PlayerConfiguration(pi));
+            playerConfigs.Insert(pi.playerIndex, new PlayerConfiguration(pi));
         }
     }
+
+    public void HandlePlayerQuit(int index)
+    {
+        Debug.Log("Playe quit " + index);
+        playerConfigs[index] = null;
+    }
+
+    private void CountDownStart()
+    {
+        bool allPlayersReady = playerConfigs
+                   .Where(player => player != null)
+                   .All(player => player.IsReady);
+
+        if (countDown != 0 && allPlayersReady)
+        {
+            countDown--;
+            countDownText.text = countDown.ToString();
+            Invoke(nameof(CountDownStart), 1);
+        }
+        else if (countDown == 0)
+        {
+            print("launch game");
+        }
+        else
+        {
+            CancelInvoke(nameof(CountDownStart));
+        }
+
+    }
 }
+
 
 public class PlayerConfiguration 
 {
