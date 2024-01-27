@@ -16,9 +16,9 @@ public class PlayerMovement : MonoBehaviour
     private float iceRotSpeed;
     private float baseMoveSpeed;
 
-    public void playerMovement(CallbackContext context)
+    public void InputMovement(Vector2 newInput)
     {
-        input = context.ReadValue<Vector2>();
+        input = newInput;
     }
 
     private void Start()
@@ -48,10 +48,6 @@ public class PlayerMovement : MonoBehaviour
             iceRotSpeed -= 700 * Time.deltaTime;
             transform.rotation *= Quaternion.Euler(0, iceRotSpeed * Time.deltaTime, 0);
         }
-        //carAndWheel[0].transform.localRotation = Quaternion.Euler(transform.forward - new Vector3(input.x,0,input.y)*20);
-
-        //carAndWheel[3].transform.localRotation = Quaternion.Euler(0, input.x*30, 90);
-        //carAndWheel[4].transform.localRotation = Quaternion.Euler(0, input.x*30, 90);
     }
 
     public void SetOnIce(bool state)
