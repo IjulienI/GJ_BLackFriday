@@ -8,7 +8,6 @@ using UnityEngine.InputSystem;
 public class PlayerConfigManager : MonoBehaviour
 {
     private List<PlayerConfiguration> playerConfigs = new List<PlayerConfiguration>();
-    [SerializeField] int MaxPlayer = 4;
     [SerializeField] TextMeshProUGUI countDownText;
 
     private int countDown = 4;

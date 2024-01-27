@@ -2005,7 +2005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8016455150522403316, guid: 437f72e21a51324449660b3c4c97bae3, type: 3}
       propertyPath: m_JoinBehavior
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8016455150522403316, guid: 437f72e21a51324449660b3c4c97bae3, type: 3}
       propertyPath: m_JoinAction.m_Action.m_Id
