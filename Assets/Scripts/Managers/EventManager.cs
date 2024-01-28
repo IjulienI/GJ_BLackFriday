@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
+    public static EventManager Instance;
+
     [Header("References")]
     [SerializeField] private List<Events> events;
     [Header("Settings")]
@@ -17,22 +19,28 @@ public class EventManager : MonoBehaviour
 
     private void Start()
     {
+        Instance = this;
         TimeBeforeEvent = Random.Range(minEventsRemanence, maxEventsRemanence);
-        Invoke(nameof(StartEvent), TimeBeforeEvent);
     }
 
-    private void StartEvent()
+    public void StartEvent()
+    {
+        TimeBeforeEvent = Random.Range(minEventsRemanence, maxEventsRemanence);
+        Invoke(nameof(EventBegin), TimeBeforeEvent);
+    }
+
+    private void EventBegin()
     {
         Events eventTemp;
         while (true)
         {
             eventTemp = events[Random.Range(0, events.Count)];
-            if(eventTemp != lastEvent )
+            if (eventTemp != lastEvent)
             {
                 Debug.Log(eventTemp.name);
-                if(eventTemp.name == "EarthQuakeEvent")
+                if (eventTemp.name == "EarthQuakeEvent")
                 {
-                    if(GameManager.Instance.CanEarthQuake())
+                    if (GameManager.Instance.CanEarthQuake())
                     {
                         lastEvent = eventTemp;
                         eventTemp.StartEvent();
@@ -48,7 +56,7 @@ public class EventManager : MonoBehaviour
                 }
             }
         }
-        TimeBeforeEvent = Random.Range(minEventsRemanence, maxEventsRemanence);
-        Invoke(nameof(StartEvent), TimeBeforeEvent);
+        
+        StartEvent();
     }
 }

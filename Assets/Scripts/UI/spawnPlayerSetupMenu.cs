@@ -11,8 +11,9 @@ public class spawnPlayerSetupMenu : MonoBehaviour
     private PlayerSetUpMenuScript menu;
     private void Start()
     {
-        input = GetComponent<PlayerInput>(); 
+        input = GetComponent<PlayerInput>();
         Invoke(nameof(refSetup), 0.2f);       
+
     }
     private void refSetup()
     {
@@ -23,7 +24,9 @@ public class spawnPlayerSetupMenu : MonoBehaviour
             menu = newMenu.GetComponent<PlayerSetUpMenuScript>();
             input.uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
             menu.SetPlayerIndex(input);
+           
         }
+        menu.SelectCharacterLeft();
     }
     private void Update()
     {

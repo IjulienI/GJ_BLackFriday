@@ -114,12 +114,13 @@ MonoBehaviour:
   hitParticles:
   - {fileID: 5588415840777799936, guid: f85e5adfa1910b14cbc4d8a0a2a17ccd, type: 3}
   - {fileID: 194579988161184882, guid: 12c5db9fa56b5d849a147bf6145a45a6, type: 3}
-  spinParticle: {fileID: 0}
+  spinParticle: {fileID: 57406473398893278, guid: 6b3890b9c0c4e064b8919512aaba743a, type: 3}
   driveParticle:
   - {fileID: 697453946133671959}
   - {fileID: 4911198833823287495}
   - {fileID: 5854666278801953088}
   attackCooldown: 0.4
+  iceResistance: 0
 --- !u!114 &5183658113827395977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickItemEffect: {fileID: 57406473398893278, guid: 6b3890b9c0c4e064b8919512aaba743a, type: 3}
+  inventorySize: 10
 --- !u!65 &5632339491263443281
 BoxCollider:
   m_ObjectHideFlags: 0

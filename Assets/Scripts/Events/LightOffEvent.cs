@@ -21,11 +21,6 @@ public class LightOffEvent : Events
         {
             lights[i].SetActive(false);
         }
-        List<GameObject> players = GameObject.FindGameObjectsWithTag("Player").ToList();
-        for(int i = 0;i < players.Count; i++)
-        {
-            Debug.Log(players[i].name);
-        }
 
         eventTime = Random.Range(minEventTime, maxEventTime);
         Invoke(nameof(EndEvent), eventTime);

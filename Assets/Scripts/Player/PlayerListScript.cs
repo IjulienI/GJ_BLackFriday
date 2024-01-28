@@ -9,14 +9,16 @@ public class PlayerListScript : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI[] listTexts;
     [SerializeField] private TextMeshProUGUI timerText;
-    [SerializeField] private Slider[] listLines;
+    [SerializeField] private GameObject[] listLines;
     [SerializeField] private GameObject listGO;
+    [SerializeField] private GameObject lineListGO;
+    [SerializeField] private int timer;
 
-    private GameObject[] listObjects;
+    private List<GameObject> itemInStore = new List<GameObject>();
     private List<GameObject> itemInList = new List<GameObject>();
     private List<GameObject> ItemGet = new List<GameObject>();
     private bool displayList;
-    private int timer;
+
 
     private void Start()
     {
@@ -26,9 +28,10 @@ public class PlayerListScript : MonoBehaviour
 
         for(int i = 0; i< rayonInLevel.Length; i++)
         {
-            listObjects.SetValue(rayonInLevel[i].GetItemShelf(), i);
+            itemInStore.Add(rayonInLevel[i].GetItemShelf());
         }
 
+        GameTimer();
         MakeNewList();
     }
     private void Update()
@@ -36,10 +39,12 @@ public class PlayerListScript : MonoBehaviour
         if(displayList)
         {
             listGO.transform.localPosition = Vector3.Slerp(listGO.transform.localPosition, new Vector3(0f, -267f, 0f), 5 * Time.deltaTime);
+            lineListGO.transform.localPosition = Vector3.Slerp(listGO.transform.localPosition, new Vector3(0f, -267f, 0f), 5 * Time.deltaTime);
         }
         else
         {
             listGO.transform.localPosition = Vector3.Slerp(listGO.transform.localPosition, new Vector3(0f, -790f, 0f), 5 * Time.deltaTime);
+            lineListGO.transform.localPosition = Vector3.Slerp(listGO.transform.localPosition, new Vector3(0f, -790f, 0f), 5 * Time.deltaTime);
         }
     }
 
@@ -74,30 +79,44 @@ public class PlayerListScript : MonoBehaviour
 
     private void DrawRayOnItems(GameObject actualObject)
     {
-
+       for(int i = 0; i < itemInList.Count; i++)
+        {
+            if (itemInList[i] == actualObject)
+            {
+                listLines[i].SetActive(true); break;
+            }
+        }
     }
 
     private void GameTimer()
     {
-        timer++;
-        timerText.text = "Temps restant : " + timer;
+        if(timer >= 1)
+        {
+            timer--;
+            timerText.text = "Temps restant : " + timer;
+            Invoke(nameof(GameTimer), 1);
+        }
+        else
+        {
+
+        }
     }
 
     private void MakeNewList()
     {
         for (int i = 0; i < listTexts.Length; i++)
         {
-            int randomItem = Random.Range(0, listObjects.Length);
+            int randomItem = Random.Range(0, itemInStore.Count);
 
-            while (itemInList.Contains(listObjects[randomItem]))
+            while (itemInList.Contains(itemInStore[randomItem]))
             {
-                randomItem = Random.Range(0, listObjects.Length);
+                randomItem = Random.Range(0, itemInStore.Count);
             }
-            if (!itemInList.Contains(listObjects[randomItem]))
+            if (!itemInList.Contains(itemInStore[randomItem]))
             {
-                itemInList.Add(listObjects[randomItem]);
+                itemInList.Add(itemInStore[randomItem]);
             }
-            listTexts[i].SetText(listObjects[randomItem].GetComponent<ItemScript>().GetName());
+            listTexts[i].SetText(itemInStore[randomItem].GetComponent<ItemScript>().GetName());
         }
     }
 }

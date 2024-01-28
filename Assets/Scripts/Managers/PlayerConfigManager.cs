@@ -11,10 +11,13 @@ public class PlayerConfigManager : MonoBehaviour
 {
     private List<PlayerConfiguration> playerConfigs = new List<PlayerConfiguration>();
     [SerializeField] TextMeshProUGUI countDownText;
+    [SerializeField] GameObject LSRef;
     [SerializeField] string[] levelNames;
 
     private int countDown = 4;
-    private bool countDownStart;
+    private bool countDownStart, loadingScreenAppeared;
+    private AsyncOperation async;
+
     public static PlayerConfigManager Instance {get; private set;}
 
     private void Start() 
@@ -58,7 +61,19 @@ public class PlayerConfigManager : MonoBehaviour
         
             if (allPlayersReady)
             {
-                CountDownStart();
+                int ValidPlayer = 0;
+                for(int i = 0; i < playerConfigs.Count; i++)
+                {
+                    if (playerConfigs != null)
+                    {
+                        ValidPlayer++;
+                    }
+                }
+                print(ValidPlayer);
+                if(ValidPlayer >= 2 && !loadingScreenAppeared) 
+                {
+                    CountDownStart();
+                }
             }
             else
             {
@@ -98,20 +113,23 @@ public class PlayerConfigManager : MonoBehaviour
 
         if (countDown != 0 && allPlayersReady)
         {
+            loadingScreenAppeared = true;
             countDown--;
             countDownText.text = countDown.ToString();
             Invoke(nameof(CountDownStart), 1);
         }
         else if (countDown == 0)
         {
-            //int randomLevel = Random.Range(2, levelNames.Length - 1);
-            //SceneManager.LoadScene(randomLevel);
+            loadingScreenAppeared = true;
+            Instantiate(LSRef, transform);
+            int randomLevel = Random.Range(2, 3);
+            SceneManager.LoadScene(randomLevel);
 
             SceneManager.UnloadSceneAsync("MainMenu 1");
-            SceneManager.LoadScene("Level1Temp");
         }
         else
         {
+            loadingScreenAppeared = false;
             CancelInvoke(nameof(CountDownStart));
         }
 

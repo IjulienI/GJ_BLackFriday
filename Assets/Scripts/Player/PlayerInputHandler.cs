@@ -46,6 +46,11 @@ public class PlayerInputHandler : MonoBehaviour
             movement.OpenList();
         }
 
+        if (input.actions["Pause"].triggered)
+        {
+
+        }
+
 
     }
 
