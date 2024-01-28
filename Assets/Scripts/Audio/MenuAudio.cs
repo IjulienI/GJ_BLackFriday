@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuAudio : MonoBehaviour
 {
-    [SerializeField] private List<int> safeScene;
+    private List<int> safeScene = new List<int> {0,1};
     private bool destroy;
     private void Start()
     {
