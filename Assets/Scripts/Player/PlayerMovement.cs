@@ -26,9 +26,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        babySpeed = baseMoveSpeed / 2f;
         rb = GetComponent<Rigidbody>();
         baseMoveSpeed = moveSpeed;
+        babySpeed = baseMoveSpeed / 2f;
         basesteering = steeringSpeed;
     }
 

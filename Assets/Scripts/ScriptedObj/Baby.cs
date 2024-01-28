@@ -59,12 +59,11 @@ public class Baby : MonoBehaviour
     }
 
     private void AttachBaby(GameObject player)
-    {
-        Destroy(GetComponent<SphereCollider>());
-        CancelInvoke(nameof(DestroyObject));
+    {        
         if(playerTouched != null && playerTouched != player.GetComponent<PlayerMovement>())
         {
             playerTouched.BabyEvent(false);
+            CancelInvoke(nameof(DestroyObject));
         }
         playerTouched = player.GetComponent<PlayerMovement>();
         speed = 0;
