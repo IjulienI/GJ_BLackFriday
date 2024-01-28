@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerListScript : MonoBehaviour
@@ -98,7 +99,7 @@ public class PlayerListScript : MonoBehaviour
         }
         else
         {
-
+            SceneManager.LoadScene("MainMenu 1");
         }
     }
 
