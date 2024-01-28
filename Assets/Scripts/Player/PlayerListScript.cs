@@ -11,12 +11,13 @@ public class PlayerListScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private Slider[] listLines;
     [SerializeField] private GameObject listGO;
+    [SerializeField] private int timer;
 
     private GameObject[] listObjects;
     private List<GameObject> itemInList = new List<GameObject>();
     private List<GameObject> ItemGet = new List<GameObject>();
     private bool displayList;
-    private int timer;
+
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class PlayerListScript : MonoBehaviour
             listObjects.SetValue(rayonInLevel[i].GetItemShelf(), i);
         }
 
+        GameTimer();
         MakeNewList();
     }
     private void Update()
@@ -79,8 +81,16 @@ public class PlayerListScript : MonoBehaviour
 
     private void GameTimer()
     {
-        timer++;
-        timerText.text = "Temps restant : " + timer;
+        if(timer >= 1)
+        {
+            timer--;
+            timerText.text = "Temps restant : " + timer;
+            Invoke(nameof(GameTimer), 1);
+        }
+        else
+        {
+
+        }
     }
 
     private void MakeNewList()

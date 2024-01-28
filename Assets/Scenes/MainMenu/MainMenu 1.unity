@@ -1949,6 +1949,10 @@ PrefabInstance:
       value: PlayerConfigManager
       objectReference: {fileID: 0}
     - target: {fileID: 4592039686363905499, guid: 437f72e21a51324449660b3c4c97bae3, type: 3}
+      propertyPath: LSRef
+      value: 
+      objectReference: {fileID: 7915202741696571184, guid: 1f8b06d1c30e0344aacbcfbd81abdee5, type: 3}
+    - target: {fileID: 4592039686363905499, guid: 437f72e21a51324449660b3c4c97bae3, type: 3}
       propertyPath: countDownText
       value: 
       objectReference: {fileID: 1262622021}

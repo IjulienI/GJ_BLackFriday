@@ -89,6 +89,15 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""dad53cc5-cdca-4f22-94e0-3aa489d7d55f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -212,6 +221,17 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
                     ""action"": ""shoppingList"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""89cb1c4f-5274-439c-9bca-7719554e848c"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -227,6 +247,7 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
         m_UI_AttackLeft = m_UI.FindAction("AttackLeft", throwIfNotFound: true);
         m_UI_AttackRight = m_UI.FindAction("AttackRight", throwIfNotFound: true);
         m_UI_shoppingList = m_UI.FindAction("shoppingList", throwIfNotFound: true);
+        m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -295,6 +316,7 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_AttackLeft;
     private readonly InputAction m_UI_AttackRight;
     private readonly InputAction m_UI_shoppingList;
+    private readonly InputAction m_UI_Pause;
     public struct UIActions
     {
         private @InputPlayer m_Wrapper;
@@ -306,6 +328,7 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
         public InputAction @AttackLeft => m_Wrapper.m_UI_AttackLeft;
         public InputAction @AttackRight => m_Wrapper.m_UI_AttackRight;
         public InputAction @shoppingList => m_Wrapper.m_UI_shoppingList;
+        public InputAction @Pause => m_Wrapper.m_UI_Pause;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -336,6 +359,9 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
             @shoppingList.started += instance.OnShoppingList;
             @shoppingList.performed += instance.OnShoppingList;
             @shoppingList.canceled += instance.OnShoppingList;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -361,6 +387,9 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
             @shoppingList.started -= instance.OnShoppingList;
             @shoppingList.performed -= instance.OnShoppingList;
             @shoppingList.canceled -= instance.OnShoppingList;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -387,5 +416,6 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
         void OnAttackLeft(InputAction.CallbackContext context);
         void OnAttackRight(InputAction.CallbackContext context);
         void OnShoppingList(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

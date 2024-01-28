@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
+    public static EventManager Instance;
+
     [Header("References")]
     [SerializeField] private List<Events> events;
     [Header("Settings")]
@@ -17,11 +19,11 @@ public class EventManager : MonoBehaviour
 
     private void Start()
     {
+        Instance = this;
         TimeBeforeEvent = Random.Range(minEventsRemanence, maxEventsRemanence);
-        Invoke(nameof(StartEvent), TimeBeforeEvent);
     }
 
-    private void StartEvent()
+    public void StartEvent()
     {
         Events eventTemp;
         while (true)

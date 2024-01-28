@@ -10,10 +10,13 @@ public class PlayerConfigManager : MonoBehaviour
 {
     private List<PlayerConfiguration> playerConfigs = new List<PlayerConfiguration>();
     [SerializeField] TextMeshProUGUI countDownText;
+    [SerializeField] GameObject LSRef;
     [SerializeField] string[] levelNames;
 
     private int countDown = 4;
     private bool countDownStart;
+    private AsyncOperation async;
+
     public static PlayerConfigManager Instance {get; private set;}
 
     private void Start() 
@@ -49,7 +52,19 @@ public class PlayerConfigManager : MonoBehaviour
         
             if (allPlayersReady)
             {
-                CountDownStart();
+                int ValidPlayer = 0;
+                for(int i = 0; i < playerConfigs.Count; i++)
+                {
+                    if (playerConfigs != null)
+                    {
+                        ValidPlayer++;
+                    }
+                }
+                print(ValidPlayer);
+                if(ValidPlayer >= 2) 
+                {
+                    CountDownStart();
+                }
             }
             else
             {
@@ -95,11 +110,12 @@ public class PlayerConfigManager : MonoBehaviour
         }
         else if (countDown == 0)
         {
-            //int randomLevel = Random.Range(2, levelNames.Length - 1);
-            //SceneManager.LoadScene(randomLevel);
+            Instantiate(LSRef, transform);
+            int randomLevel = Random.Range(2, 3);
+            SceneManager.LoadScene(randomLevel);
 
             SceneManager.UnloadSceneAsync("MainMenu 1");
-            SceneManager.LoadScene("Level2Temp");
+            //SceneManager.LoadScene("Level2Temp");
         }
         else
         {
