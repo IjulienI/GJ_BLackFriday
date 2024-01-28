@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float acceleration;
     [SerializeField] private float steeringSpeed;
     [SerializeField] private GameObject[] carAndWheel;
+    [SerializeField] private GameObject[] hitParticles;
+    [SerializeField] private GameObject spinParticle;
+    [SerializeField] private ParticleSystem[] driveParticle;
     [SerializeField] private float attackCooldown = 0.4f;
 
     private Vector2 input;
@@ -30,6 +33,9 @@ public class PlayerMovement : MonoBehaviour
         baseMoveSpeed = moveSpeed;
         babySpeed = baseMoveSpeed / 2f;
         basesteering = steeringSpeed;
+        driveParticle[0] = transform.GetChild(0).GetComponent<ParticleSystem>();
+        driveParticle[1] = transform.GetChild(1).GetComponent<ParticleSystem>();
+        driveParticle[2] = transform.GetChild(2).GetComponent<ParticleSystem>();
     }
 
     public void OpenList()
@@ -47,6 +53,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!isBoosted)
         {
+            driveParticle[0].Stop();
+            driveParticle[1].Stop();
+            driveParticle[2].Play();
             isBoosted = true;
             Invoke(nameof(stopBoost), boostTime);
         }
@@ -54,6 +63,9 @@ public class PlayerMovement : MonoBehaviour
     private void stopBoost()
     {
         isBoosted = false;
+        driveParticle[0].Play();
+        driveParticle[1].Play();
+        driveParticle[2].Stop();
     }
 
     public void AttackLeft()
@@ -66,10 +78,38 @@ public class PlayerMovement : MonoBehaviour
 
             if (Physics.SphereCast(transform.position, 1, transform.right, out hit, 4))
             {
-                print(hit.collider.gameObject.name);
+                if(hit.collider.gameObject.GetComponent<PlayerMovement>() != null)
+                {
+
+                }
+                else if(hit.collider.gameObject.GetComponent<RayonScript>() != null)
+                {
+
+                }
             }
             Invoke(nameof(ResetAttack), attackCooldown);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.GetComponent<PlayerMovement>() != null)
+        {
+            foreach (ContactPoint contact in collision.contacts)
+            {
+                Debug.DrawRay(contact.point, contact.normal, Color.white);
+
+                if (collision.relativeVelocity.magnitude > 0.5f)
+                {
+                    Instantiate(hitParticles[0], contact.point, Quaternion.identity);
+                }
+            }
+        }
+        else if(collision.gameObject.tag != "floor")
+        {
+            Instantiate(hitParticles[1], transform.position + transform.forward, Quaternion.identity);
+        }
+
     }
     public void AttackRight()
     {
@@ -81,7 +121,14 @@ public class PlayerMovement : MonoBehaviour
 
             if (Physics.SphereCast(transform.position, 3, -transform.right, out hit, 4))
             {
-                print(hit.collider.gameObject.name);
+                if (hit.collider.gameObject.GetComponent<PlayerMovement>() != null)
+                {
+
+                }
+                else if (hit.collider.gameObject.GetComponent<RayonScript>() != null)
+                {
+
+                }
             }
             Invoke(nameof(ResetAttack), attackCooldown);
         }
@@ -138,6 +185,8 @@ public class PlayerMovement : MonoBehaviour
         onIce = state;
         if(state)
         {
+            var spin = Instantiate(spinParticle, transform.position, Quaternion.identity);
+            spin.transform.SetParent(transform, false);
             CancelInvoke(nameof(DisableIce));
             rb.drag = 1;
             iceRotSpeed = 1000;
