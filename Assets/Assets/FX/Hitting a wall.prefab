@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5408210255310536489}
   - component: {fileID: 7957639562632009062}
   - component: {fileID: 742359859237044902}
+  - component: {fileID: 4606185317362342636}
   m_Layer: 0
   m_Name: Hitting a wall
   m_TagString: Untagged
@@ -4895,3 +4896,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &4606185317362342636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194579988161184882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44054d642180594180d8a27643940c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
