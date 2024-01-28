@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 77136264}
   - component: {fileID: 77136263}
   m_Layer: 5
-  m_Name: Item2 (3)
+  m_Name: itemName4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 169136787}
   - component: {fileID: 169136786}
   m_Layer: 5
-  m_Name: Item2 (5)
+  m_Name: itemName6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -516,7 +516,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -864,7 +864,7 @@ GameObject:
   - component: {fileID: 346516148}
   - component: {fileID: 346516147}
   m_Layer: 5
-  m_Name: Item2 (7)
+  m_Name: itemName1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -944,7 +944,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1354,9 +1354,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e83594129dc3060469d8de917714199e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listTexts: []
+  listTexts:
+  - {fileID: 346516147}
+  - {fileID: 1658636664}
+  - {fileID: 1315963516}
+  - {fileID: 77136263}
+  - {fileID: 1545605139}
+  - {fileID: 169136786}
+  - {fileID: 1613058270}
+  - {fileID: 1791338515}
+  - {fileID: 1459429757}
+  - {fileID: 529557548}
   listLines: []
-  listObjects: []
+  listObjects:
+  - {fileID: 4875587652067172684, guid: c04bc04bedcd4bf4cad344074cbb1284, type: 3}
+  - {fileID: 2283470836599364487, guid: 64b4b3773640317458836bbc89e49a40, type: 3}
+  - {fileID: 1085001389112816933, guid: cc04085edf8afa149a6beb5f3392747d, type: 3}
+  - {fileID: 2328039073748391020, guid: 8a86be36d1ded5e41a27fd97b0d152be, type: 3}
+  - {fileID: 6796482290416874987, guid: f968b9abad0593d43957c0157410daf7, type: 3}
+  - {fileID: 6138084988413922136, guid: a870d1e11c7b98c409bdc3299ab9812b, type: 3}
+  - {fileID: 204655817408245332, guid: 28364ec16fbf41642a280c4719f4615b, type: 3}
+  - {fileID: 769063228932487465, guid: 25d8d1a8987fdfe48abcf003d8b3b55b, type: 3}
+  - {fileID: 3495132597427128108, guid: 6fbb7ea11160eee47940c474fc9a014a, type: 3}
+  - {fileID: 7386884394111925531, guid: ea42456f0fac69d4f91906ce004dc27b, type: 3}
+  - {fileID: 5688129242737090255, guid: bde4724a608905743b7182ef028ae7a0, type: 3}
+  - {fileID: 8802182623448979938, guid: 745ba0a749db7a748bd8a969153f496b, type: 3}
+  - {fileID: 4239789802431486874, guid: f4ea9b10b07984c4fbb5d09414770aa8, type: 3}
+  - {fileID: 4669560698579293854, guid: 30434477884662e4797e025321963420, type: 3}
+  - {fileID: 3004158815202299391, guid: 8a708d88dee46de488c85d0054c526f8, type: 3}
+  - {fileID: 8009130627647147239, guid: 7dcf6a8ea7678d442bb60ebb440473ef, type: 3}
+  - {fileID: 8009130627647147239, guid: 7dcf6a8ea7678d442bb60ebb440473ef, type: 3}
+  - {fileID: 5308230953576320809, guid: 27588f9b34d9d4c4da057741c56f56ed, type: 3}
+  - {fileID: 1504278945831005076, guid: d4965b7225097e44c8afb9d1bd608e43, type: 3}
+  - {fileID: 6539720362287273095, guid: 68aa8bd87a6a3124e96e557ce2f00de2, type: 3}
   listGO: {fileID: 395429117}
 --- !u!1 &440452344
 GameObject:
@@ -1723,7 +1753,7 @@ GameObject:
   - component: {fileID: 529557549}
   - component: {fileID: 529557548}
   m_Layer: 5
-  m_Name: Item2 (10)
+  m_Name: itemName10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1803,7 +1833,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -4164,7 +4194,7 @@ GameObject:
   - component: {fileID: 1315963517}
   - component: {fileID: 1315963516}
   m_Layer: 5
-  m_Name: Item2 (2)
+  m_Name: itemName3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4244,7 +4274,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -4497,7 +4527,7 @@ GameObject:
   - component: {fileID: 1459429758}
   - component: {fileID: 1459429757}
   m_Layer: 5
-  m_Name: Item2 (9)
+  m_Name: itemName9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4577,7 +4607,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -4689,7 +4719,7 @@ GameObject:
   - component: {fileID: 1545605140}
   - component: {fileID: 1545605139}
   m_Layer: 5
-  m_Name: Item2 (4)
+  m_Name: itemName5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4769,7 +4799,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -5139,7 +5169,7 @@ GameObject:
   - component: {fileID: 1613058271}
   - component: {fileID: 1613058270}
   m_Layer: 5
-  m_Name: Item2 (6)
+  m_Name: itemName7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5219,7 +5249,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -5273,7 +5303,7 @@ GameObject:
   - component: {fileID: 1658636665}
   - component: {fileID: 1658636664}
   m_Layer: 5
-  m_Name: Item2 (1)
+  m_Name: itemName2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5353,7 +5383,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -5757,7 +5787,7 @@ GameObject:
   - component: {fileID: 1791338516}
   - component: {fileID: 1791338515}
   m_Layer: 5
-  m_Name: Item2 (8)
+  m_Name: itemName8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5837,7 +5867,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

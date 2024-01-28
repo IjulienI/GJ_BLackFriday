@@ -23,11 +23,16 @@ public class PlayerListScript : MonoBehaviour
         for (int i = 0; i < listTexts.Length; i++)
         {
             int randomItem = Random.Range(0, listObjects.Length);
+
+            while(itemInList.Contains(listObjects[randomItem]))
+            {
+                randomItem = Random.Range(0, listObjects.Length);
+            }
             if (!itemInList.Contains(listObjects[randomItem]))
             {
                 itemInList.Add(listObjects[randomItem]);
             }
-            listTexts[i].SetText(listObjects[randomItem].name);
+            listTexts[i].SetText(listObjects[randomItem].GetComponent<ItemScript>().GetName());
         }
     }
     private void Update()
@@ -46,7 +51,7 @@ public class PlayerListScript : MonoBehaviour
     {
         CancelInvoke(nameof(ToggleList));
         displayList = true;
-        Invoke(nameof(ToggleList), 1.5f);
+        Invoke(nameof(ToggleList), 2.5f);
     }
     private void ToggleList()
     {
