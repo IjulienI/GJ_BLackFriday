@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5449043410b83fb4f943be2eb43e0c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minTimeLife: 10
+  maxTimeLife: 20
 --- !u!212 &867730342442242265
 SpriteRenderer:
   m_ObjectHideFlags: 0

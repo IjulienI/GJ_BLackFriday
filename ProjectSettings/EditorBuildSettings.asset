@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestMaps/TEmp/Level2Temp.unity
     guid: 93aa841363617a94da16de884ef96000
+  - enabled: 1
+    path: Assets/Scenes/TestMaps/TEmp/Level1Temp.unity
+    guid: 9d73ddcb0ca3af144966a4c171a841c8
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a8a8afd4a39455b4e890cf8e4df6b049, type: 2}

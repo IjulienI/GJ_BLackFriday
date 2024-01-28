@@ -3,7 +3,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using static UnityEngine.InputSystem.InputAction;
 public class PlayerSetUpMenuScript : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI titleText;

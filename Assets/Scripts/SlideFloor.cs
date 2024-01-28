@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class SlideFloor : MonoBehaviour
 {
-
+    [SerializeField] private float minTimeLife;
+    [SerializeField] private float maxTimeLife;
     private PlayerMovement playerMovement;
     private bool destroy;
     private bool start = true;
+    private float lifeTime;
     private BoxCollider boxCollider;
 
     private void Start()
@@ -16,6 +18,8 @@ public class SlideFloor : MonoBehaviour
         transform.localScale = Vector3.zero;
         boxCollider = GetComponent<BoxCollider>();
         boxCollider.enabled = false;
+        lifeTime = Random.Range(minTimeLife,maxTimeLife);
+        Invoke(nameof(StartDestroy), lifeTime);
     }
     private void Update()
     {
@@ -47,6 +51,12 @@ public class SlideFloor : MonoBehaviour
             Destroy(boxCollider);
             Invoke(nameof(DestroyIce), 1f);
         }
+    }
+
+    private void StartDestroy()
+    {
+        destroy = true;
+        Invoke(nameof(DestroyIce), 1f);
     }
     private void DestroyIce()
     {
