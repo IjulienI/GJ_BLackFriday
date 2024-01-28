@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countDownText: {fileID: 0}
-  levelNames: []
+  levelNames:
+  - MainMenu 1
 --- !u!114 &8016455150522403316
 MonoBehaviour:
   m_ObjectHideFlags: 0

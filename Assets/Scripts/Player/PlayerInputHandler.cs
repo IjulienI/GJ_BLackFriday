@@ -43,6 +43,7 @@ public class PlayerInputHandler : MonoBehaviour
         if (input.actions["shoppingList"].triggered)
         {
             PlayerListScript.Instance.DisplayList();
+            movement.OpenList();
         }
 
 
