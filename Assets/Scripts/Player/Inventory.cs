@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    [SerializeField] private GameObject pickItemEffect;
     private List<GameObject> inventory = new List<GameObject>();
 
     private int score = 0;
@@ -26,6 +27,16 @@ public class Inventory : MonoBehaviour
                 
                 inventory.Remove(inventory[i]);
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "item")
+        {
+            Instantiate(pickItemEffect, other.transform);
+            AddInventory(other.gameObject);
+            Destroy(other.gameObject);
         }
     }
 

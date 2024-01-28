@@ -16,4 +16,9 @@ public class RayonScript : MonoBehaviour
             itemHolder[i].GetComponent<MeshFilter>().transform.localScale = new Vector3 (0.1f, 0.1f, 0.1f);
         }
     }
+
+    public GameObject GetItemShelf()
+    {
+        return itemShelf;
+    }
 }
