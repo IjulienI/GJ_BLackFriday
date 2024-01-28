@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.TextCore.Text;
 
 public class PlayerConfigManager : MonoBehaviour
 {
@@ -34,6 +35,14 @@ public class PlayerConfigManager : MonoBehaviour
         if (playerConfigs[index] != null)
         {
             playerConfigs[index].CharacterSelection = character;
+        }
+    }
+
+    public void SetPlayerName(int index, string name)
+    {
+        if (playerConfigs[index] != null)
+        {
+            playerConfigs[index].CharacterName = name;
         }
     }
 
@@ -99,7 +108,7 @@ public class PlayerConfigManager : MonoBehaviour
             //SceneManager.LoadScene(randomLevel);
 
             SceneManager.UnloadSceneAsync("MainMenu 1");
-            SceneManager.LoadScene("Level2Temp");
+            SceneManager.LoadScene("Level1Temp");
         }
         else
         {
@@ -121,4 +130,5 @@ public class PlayerConfiguration
     public int PlayerIndex { get; set; }
     public bool IsReady { get; set; }
     public int CharacterSelection { get; set; }
+    public string CharacterName { get; set; }   
 }

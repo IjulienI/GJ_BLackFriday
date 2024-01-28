@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -23,6 +24,7 @@ public class PlayerSetUpMenuScript : MonoBehaviour
         playerIndex = pi.playerIndex;
         titleText.SetText("Player " + (pi.playerIndex + 1));
         ignoreInputTime = Time.time + ignoreInputTime;
+        PlayerConfigManager.Instance.SetPlayerName(playerIndex, oldName.text);
     }
 
     private void Update()
