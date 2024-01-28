@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -9,16 +7,10 @@ public class UiManager : MonoBehaviour
 {
     [SerializeField] private GameObject main;
     [SerializeField] private GameObject settings;
-    private EventSystem eventSystem;
-
-    private void Start()
-    {
-        eventSystem = EventSystem.current;
-    }
 
     public void GoToPlayerSelection()
     {
-        SceneManager.LoadScene("MainMenu 1");
+        SceneManager.LoadScene("PlayerSelection");
     }
     public void Settings()
     {
