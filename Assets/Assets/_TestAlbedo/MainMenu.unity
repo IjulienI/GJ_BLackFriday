@@ -1107,7 +1107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4909e3eb014253c4285568026e10bc01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.6
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4909e3eb014253c4285568026e10bc01, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1115,31 +1115,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4909e3eb014253c4285568026e10bc01, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.97861445
+      value: 0.9708883
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4909e3eb014253c4285568026e10bc01, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.16957152
+      value: 0.18553144
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4909e3eb014253c4285568026e10bc01, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.09268359
+      value: -0.05406362
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4909e3eb014253c4285568026e10bc01, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.07049155
+      value: 0.14153118
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4909e3eb014253c4285568026e10bc01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 18.592
+      value: 22.059
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4909e3eb014253c4285568026e10bc01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -12.51
+      value: -3.245
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4909e3eb014253c4285568026e10bc01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -10.296
+      value: 15.955
       objectReference: {fileID: 0}
     - target: {fileID: -5820110015224967675, guid: 4909e3eb014253c4285568026e10bc01, type: 3}
       propertyPath: m_Materials.Array.data[0]
