@@ -91,10 +91,10 @@ MonoBehaviour:
   characterImage: {fileID: 567941637218532578}
   readySlider: {fileID: 6495683058969995422}
   characterUI:
-  - {fileID: 21300000, guid: 85e64f5094417534a8997caaf43b6130, type: 3}
-  - {fileID: 21300000, guid: aff9e302a45fb7e43a7ffd558c3d6355, type: 3}
-  - {fileID: 21300000, guid: 78c6bc0761ea4134fbbddc9abebac40c, type: 3}
-  - {fileID: 21300000, guid: b5dcf2b0d61dd1f469a452baa792b613, type: 3}
+  - {fileID: 21300000, guid: 52349cd2e9447c94f80e881a96c869ab, type: 3}
+  - {fileID: 21300000, guid: 240b20f8fc6cecc409298295ec3d5f9a, type: 3}
+  - {fileID: 21300000, guid: c43cc735ca183d84c8789ced69a8492a, type: 3}
+  - {fileID: 21300000, guid: f9dbc2761a8644a4e845ec4faa7d4eb1, type: 3}
 --- !u!1 &1240105421836921110
 GameObject:
   m_ObjectHideFlags: 0

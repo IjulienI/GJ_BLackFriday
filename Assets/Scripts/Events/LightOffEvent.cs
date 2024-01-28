@@ -35,7 +35,7 @@ public class LightOffEvent : Events
     {
         if (lights.Count == 0)
         {
-            Debug.Log("LightsOn");
+            Debug.Log("LightsOn"); 
         }
         for (int i = 0; i < lights.Count; i++)
         {
