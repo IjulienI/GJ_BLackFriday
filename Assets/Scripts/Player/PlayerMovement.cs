@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float steeringSpeed;
     [SerializeField] private GameObject[] carAndWheel;
     [SerializeField] private float attackCooldown = 0.4f;
+    [SerializeField] private bool iceResistance;
 
     private Vector2 input;
     private Rigidbody rb;
@@ -160,6 +161,11 @@ public class PlayerMovement : MonoBehaviour
         {
             moveSpeed = baseMoveSpeed;
         }
+    }
+
+    public bool GetIceResistance()
+    {
+        return iceResistance;
     }
 }
 

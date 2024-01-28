@@ -46,10 +46,13 @@ public class SlideFloor : MonoBehaviour
         if(other.tag == "Player")
         {
             playerMovement = other.GetComponent<PlayerMovement>();
-            playerMovement.SetOnIce(true);
-            destroy = true;
-            Destroy(boxCollider);
-            Invoke(nameof(DestroyIce), 1f);
+            if (!playerMovement.GetIceResistance())
+            {
+                playerMovement.SetOnIce(true);
+                destroy = true;
+                Destroy(boxCollider);
+                Invoke(nameof(DestroyIce), 1f);
+            }
         }
     }
 
