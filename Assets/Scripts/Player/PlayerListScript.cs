@@ -8,32 +8,28 @@ public class PlayerListScript : MonoBehaviour
     public static PlayerListScript Instance;
 
     [SerializeField] private TextMeshProUGUI[] listTexts;
+    [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private Slider[] listLines;
-    [SerializeField] private GameObject[] listObjects;
     [SerializeField] private GameObject listGO;
 
+    private GameObject[] listObjects;
     private List<GameObject> itemInList = new List<GameObject>();
     private List<GameObject> ItemGet = new List<GameObject>();
     private bool displayList;
+    private int timer;
 
     private void Start()
     {
         Instance = this;
 
-        for (int i = 0; i < listTexts.Length; i++)
-        {
-            int randomItem = Random.Range(0, listObjects.Length);
+        RayonScript[] rayonInLevel = Object.FindObjectsOfType<RayonScript>();
 
-            while(itemInList.Contains(listObjects[randomItem]))
-            {
-                randomItem = Random.Range(0, listObjects.Length);
-            }
-            if (!itemInList.Contains(listObjects[randomItem]))
-            {
-                itemInList.Add(listObjects[randomItem]);
-            }
-            listTexts[i].SetText(listObjects[randomItem].GetComponent<ItemScript>().GetName());
+        for(int i = 0; i< rayonInLevel.Length; i++)
+        {
+            listObjects.SetValue(rayonInLevel[i].GetItemShelf(), i);
         }
+
+        MakeNewList();
     }
     private void Update()
     {
@@ -60,7 +56,11 @@ public class PlayerListScript : MonoBehaviour
 
     public bool ListContain(GameObject actualObject)
     {
-        if(itemInList.Contains(actualObject) && !ItemGet.Contains(actualObject))
+        if (itemInList == ItemGet)
+        {
+            MakeNewList();
+        }
+        if (itemInList.Contains(actualObject) && !ItemGet.Contains(actualObject))
         {
             ItemGet.Add(actualObject);
             DrawRayOnItems(actualObject);
@@ -74,9 +74,30 @@ public class PlayerListScript : MonoBehaviour
 
     private void DrawRayOnItems(GameObject actualObject)
     {
-        for(int i = 0; i < listTexts.Length; i++) 
-        { 
 
+    }
+
+    private void GameTimer()
+    {
+        timer++;
+        timerText.text = "Temps restant : " + timer;
+    }
+
+    private void MakeNewList()
+    {
+        for (int i = 0; i < listTexts.Length; i++)
+        {
+            int randomItem = Random.Range(0, listObjects.Length);
+
+            while (itemInList.Contains(listObjects[randomItem]))
+            {
+                randomItem = Random.Range(0, listObjects.Length);
+            }
+            if (!itemInList.Contains(listObjects[randomItem]))
+            {
+                itemInList.Add(listObjects[randomItem]);
+            }
+            listTexts[i].SetText(listObjects[randomItem].GetComponent<ItemScript>().GetName());
         }
     }
 }
