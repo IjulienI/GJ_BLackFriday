@@ -37,9 +37,9 @@ public class InitializeLevel : MonoBehaviour
 
     private void InitializeHUD(int i, PlayerConfiguration player)
     {
-        //playerHud[i].SetActive(true);
-        //playerHud[i].transform.GetChild(0).gameObject.GetComponent<Image>().sprite = playerIcon[player.CharacterSelection];
-        //playerHud[i].transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = player.CharacterName;
+        playerHud[i].SetActive(true);
+        playerHud[i].transform.GetChild(0).gameObject.GetComponent<Image>().sprite = playerIcon[player.CharacterSelection];
+        playerHud[i].transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = player.CharacterName;
     }
 
 }
