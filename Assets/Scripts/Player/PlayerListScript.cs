@@ -34,16 +34,17 @@ public class PlayerListScript : MonoBehaviour
     {
         if(displayList)
         {
-            listGO.transform.localPosition = new Vector3(0f, -267f, 0f);
+            listGO.transform.localPosition = Vector3.Slerp(listGO.transform.localPosition, new Vector3(0f, -267f, 0f), 5 * Time.deltaTime);
         }
         else
         {
-            listGO.transform.localPosition = new Vector3(0f, -790f, 0f);
+            listGO.transform.localPosition = Vector3.Slerp(listGO.transform.localPosition, new Vector3(0f, -790f, 0f), 5 * Time.deltaTime);
         }
     }
 
     public void DisplayList()
     {
+        CancelInvoke(nameof(ToggleList));
         displayList = true;
         Invoke(nameof(ToggleList), 1.5f);
     }

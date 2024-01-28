@@ -15,8 +15,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 input;
     private Rigidbody rb;
-    private bool onIce, isAttacking, isBoosted;
-    private float iceRotSpeed;
+    private bool onIce, isAttacking, isBoosted, canMove = true;
+    private float iceRotSpeed, babySpeed;
     private float baseMoveSpeed, basesteering;
 
     public void InputMovement(Vector2 newInput)
@@ -26,9 +26,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        babySpeed = baseMoveSpeed / 2f;
         rb = GetComponent<Rigidbody>();
         baseMoveSpeed = moveSpeed;
         basesteering = steeringSpeed;
+    }
+
+    public void OpenList()
+    {
+        CancelInvoke(nameof(ToggleList));
+        canMove = false;
+        Invoke(nameof(ToggleList), 1.5f);
+    }
+    private void ToggleList()
+    {
+        canMove = true;
     }
 
     public void InputBoost()
@@ -46,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void AttackLeft()
     {
-        if(!isAttacking)
+        if(!isAttacking && canMove)
         {
             isAttacking = true;
 
@@ -61,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void AttackRight()
     {
-        if (!isAttacking)
+        if (!isAttacking && canMove)
         {
             isAttacking = true;
 
@@ -85,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!onIce)
         {
-            if (Vector3.Magnitude(input) > 0)
+            if (Vector3.Magnitude(input) > 0 && canMove)
             {
                 rb.drag = 5;
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(input.x, 0, input.y)), steeringSpeed * Time.deltaTime);
@@ -126,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
         onIce = state;
         if(state)
         {
-            CancelInvoke();
+            CancelInvoke(nameof(DisableIce));
             rb.drag = 1;
             iceRotSpeed = 1000;
             Invoke(nameof(DisableIce), 1.5f);
@@ -142,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (statu)
         {
-            moveSpeed /= 2;
+            moveSpeed = babySpeed;
         }
         else
         {
