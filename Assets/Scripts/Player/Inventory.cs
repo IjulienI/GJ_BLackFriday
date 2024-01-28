@@ -4,17 +4,28 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private GameObject pickItemEffect;
+    [SerializeField] private int inventorySize;
     private List<GameObject> inventory = new List<GameObject>();
 
     private int score = 0;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision != null && collision.gameObject.tag == "Payout")
+        if(other.gameObject.tag == "item")
         {
-            for(int i = 0; i < inventory.Count; i++)
+            if(inventory.Count < inventorySize)
             {
-                if(PlayerListScript.Instance.ListContain(inventory[i]))
+                Instantiate(pickItemEffect, other.transform);
+                AddInventory(other.gameObject);
+                Destroy(other.gameObject);
+            }
+        }
+
+        else if (other != null && other.gameObject.tag == "Payout")
+        {
+            for (int i = 0; i < inventory.Count; i++)
+            {
+                if (PlayerListScript.Instance.ListContain(inventory[i]))
                 {
                     score += inventory[i].GetComponent<ItemScript>().GetPoints();
                     print(inventory[i].GetComponent<ItemScript>().GetPoints());
@@ -24,19 +35,9 @@ public class Inventory : MonoBehaviour
                     score += 2;
                     print(2);
                 }
-                
+
                 inventory.Remove(inventory[i]);
             }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "item")
-        {
-            Instantiate(pickItemEffect, other.transform);
-            AddInventory(other.gameObject);
-            Destroy(other.gameObject);
         }
     }
 
@@ -52,6 +53,10 @@ public class Inventory : MonoBehaviour
     public void AddInventory(GameObject item)
     {
         inventory.Add(item);
+        for (int i = 0;i < inventory.Count; i++)
+        {
+            print(inventory[i]);
+        }
     }
     public void RemoveInventory(int item, bool dropItem)
     {

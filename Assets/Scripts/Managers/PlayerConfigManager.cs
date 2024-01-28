@@ -15,7 +15,7 @@ public class PlayerConfigManager : MonoBehaviour
     [SerializeField] string[] levelNames;
 
     private int countDown = 4;
-    private bool countDownStart;
+    private bool countDownStart, loadingScreenAppeared;
     private AsyncOperation async;
 
     public static PlayerConfigManager Instance {get; private set;}
@@ -70,7 +70,7 @@ public class PlayerConfigManager : MonoBehaviour
                     }
                 }
                 print(ValidPlayer);
-                if(ValidPlayer >= 2) 
+                if(ValidPlayer >= 2 && !loadingScreenAppeared) 
                 {
                     CountDownStart();
                 }
@@ -113,12 +113,14 @@ public class PlayerConfigManager : MonoBehaviour
 
         if (countDown != 0 && allPlayersReady)
         {
+            loadingScreenAppeared = true;
             countDown--;
             countDownText.text = countDown.ToString();
             Invoke(nameof(CountDownStart), 1);
         }
         else if (countDown == 0)
         {
+            loadingScreenAppeared = true;
             Instantiate(LSRef, transform);
             int randomLevel = Random.Range(2, 3);
             SceneManager.LoadScene(randomLevel);
@@ -127,6 +129,7 @@ public class PlayerConfigManager : MonoBehaviour
         }
         else
         {
+            loadingScreenAppeared = false;
             CancelInvoke(nameof(CountDownStart));
         }
 

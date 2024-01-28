@@ -25,6 +25,8 @@ public class PlayerSetUpMenuScript : MonoBehaviour
         titleText.SetText("Player " + (pi.playerIndex + 1));
         ignoreInputTime = Time.time + ignoreInputTime;
         PlayerConfigManager.Instance.SetPlayerName(playerIndex, oldName.text);
+        PlayerConfigManager.Instance.SetPlayerCharacter(playerIndex, 0);
+        characterImage.sprite = characterUI[0];
     }
 
     private void Update()

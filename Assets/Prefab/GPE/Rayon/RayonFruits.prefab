@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 115523403421686279}
   serializedVersion: 2
   m_LocalRotation: {x: 0.8605819, y: -0, z: -0, w: 0.5093121}
-  m_LocalPosition: {x: -0.03727, y: -0.01043, z: 0.03414}
+  m_LocalPosition: {x: -0.0084, y: 0.0101, z: -0.0032}
   m_LocalScale: {x: 0.27367255, y: 0.27367255, z: 0.27367255}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 150554083639714425}
   serializedVersion: 2
   m_LocalRotation: {x: 0.8605819, y: -0, z: -0, w: 0.5093121}
-  m_LocalPosition: {x: -0.02348, y: -0.01043, z: 0.03414}
+  m_LocalPosition: {x: 0.0054, y: 0.0101, z: -0.0032}
   m_LocalScale: {x: 0.27367255, y: 0.27367255, z: 0.27367255}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -176,6 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2186801992836123488}
   - component: {fileID: 9096368718997516163}
+  - component: {fileID: 601649248434177717}
   m_Layer: 0
   m_Name: RayonFruits
   m_TagString: Untagged
@@ -222,6 +223,27 @@ MonoBehaviour:
   - {fileID: 115523403421686279}
   - {fileID: 150554083639714425}
   - {fileID: 8526889419135412039}
+--- !u!65 &601649248434177717
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198087253336098401}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.06, y: 0.04, z: 0.05}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4745981464156973255
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,7 +271,7 @@ Transform:
   m_GameObject: {fileID: 4745981464156973255}
   serializedVersion: 2
   m_LocalRotation: {x: 0.8605819, y: -0, z: -0, w: 0.5093121}
-  m_LocalPosition: {x: -0.05544, y: -0.01043, z: 0.03414}
+  m_LocalPosition: {x: -0.0266, y: 0.0101, z: -0.0032}
   m_LocalScale: {x: 0.27367255, y: 0.27367255, z: 0.27367255}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -332,7 +354,7 @@ Transform:
   m_GameObject: {fileID: 8526889419135412039}
   serializedVersion: 2
   m_LocalRotation: {x: 0.8605819, y: -0, z: -0, w: 0.5093121}
-  m_LocalPosition: {x: -0.00873, y: -0.00739, z: 0.03414}
+  m_LocalPosition: {x: 0.0201, y: 0.0131, z: -0.0032}
   m_LocalScale: {x: 0.27367255, y: 0.27367255, z: 0.27367255}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -257,8 +257,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Une ossature lourde l'emp\xE8che d'aller aussi vite que les autres mais
-    il peut transporter bien plus d'objets."
+  m_text: "Dot\xE9e d'une r\xE9sistance naturelle au froid, elle ne glisse jamais
+    sur les plaques de glace glaciale. Avec elle \xE0 vos c\xF4t\xE9s, vous pouvez
+    avancer en toute s\xE9curit\xE9 dans les environnements les plus froids."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8c09723a0db3d7041aa287b5b02a3112, type: 2}
   m_sharedMaterial: {fileID: 4106718172340863798, guid: 8c09723a0db3d7041aa287b5b02a3112, type: 2}
@@ -285,8 +286,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -321,7 +322,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -61.974876, y: 0, z: -134.29858, w: -128.99303}
+  m_margin: {x: -61.974876, y: -23.296328, z: -185.78815, w: -128.99303}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -361,7 +362,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548934814}
   m_LocalRotation: {x: -0, y: -0, z: 0.017845813, w: 0.9998408}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 2.0885694, y: 2.0885694, z: 2.0885694}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -369,7 +370,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2.045}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -33.2, y: 103.8}
+  m_AnchoredPosition: {x: -21, y: 140}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &548934816
@@ -558,8 +559,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Une ossature lourde l'emp\xE8che d'aller aussi vite que les autres mais
-    il peut transporter bien plus d'objets."
+  m_text: "Malgr\xE9 ses cheveux grisonnants, frappe plus fort que le tonnerre. Son
+    exp\xE9rience dans la forge et ses bras robustes en font un atout pr\xE9cieux
+    lorsqu'il s'agit de briser des obstacles ou de combattre des ennemis.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8c09723a0db3d7041aa287b5b02a3112, type: 2}
   m_sharedMaterial: {fileID: 4106718172340863798, guid: 8c09723a0db3d7041aa287b5b02a3112, type: 2}
@@ -586,8 +588,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -622,7 +624,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -61.974876, y: 0, z: -134.29858, w: -128.99303}
+  m_margin: {x: -61.974876, y: -35.33753, z: -166.98215, w: -128.99303}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1476,8 +1478,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Une ossature lourde l'emp\xE8che d'aller aussi vite que les autres mais
-    il peut transporter bien plus d'objets."
+  m_text: "Le sprinteur ultime de la bande. Les obstacles ne sont qu'un jeu pour
+    lui, car il traverse les niveaux avec une vitesse in\xE9gal\xE9e."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8c09723a0db3d7041aa287b5b02a3112, type: 2}
   m_sharedMaterial: {fileID: 4106718172340863798, guid: 8c09723a0db3d7041aa287b5b02a3112, type: 2}
@@ -1504,8 +1506,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1540,7 +1542,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -61.974876, y: 0, z: -134.29858, w: -128.99303}
+  m_margin: {x: -61.974876, y: -24.371338, z: -152.88809, w: -163.04474}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1838,8 +1840,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Une ossature lourde l'emp\xE8che d'aller aussi vite que les autres mais
-    il peut transporter bien plus d'objets."
+  m_text: "Avec son chariot \xE0 provisions toujours plein \xE0 craquer, elle peut
+    stocker plus de ressources que quiconque. Rien ne se perd sous son \u0153il vigilant."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8c09723a0db3d7041aa287b5b02a3112, type: 2}
   m_sharedMaterial: {fileID: 4106718172340863798, guid: 8c09723a0db3d7041aa287b5b02a3112, type: 2}
@@ -1866,8 +1868,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1902,7 +1904,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -61.974876, y: 0, z: -134.29858, w: -128.99303}
+  m_margin: {x: -61.974876, y: -24.536442, z: -180.56482, w: -128.99303}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

@@ -13,7 +13,7 @@ public class ChildEvent : Events
         {
             if(spawners.Count < 1) 
             {
-                Instantiate(child, spawners[0].transform.position, spawners[0].transform.rotation);
+                //Instantiate(child, spawners[0].transform.position, spawners[0].transform.rotation);
             }
             else
             {
@@ -26,4 +26,6 @@ public class ChildEvent : Events
             }
         }
     }
+
+
 }

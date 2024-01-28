@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ad43e2fb5919f9743b0ce4f9f8fc1362, type: 2}
+    - target: {fileID: 7838675675101030191, guid: e067eb3d02a2c2f4c93317393c31345b, type: 3}
+      propertyPath: iceResistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8776480660690482938, guid: e067eb3d02a2c2f4c93317393c31345b, type: 3}
       propertyPath: m_Name
       value: Variant3
@@ -162,7 +166,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5342019563348378789}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: ea9c2b4a868a672418b383f87b0a2a5b, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 47fd8ed1d296bd946aaedc343c53494d, type: 3}
   m_Controller: {fileID: 9100000, guid: 0adadc4c0d103494c973230a49f9e074, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0

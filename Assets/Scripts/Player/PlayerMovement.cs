@@ -81,11 +81,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 if(hit.collider.gameObject.GetComponent<PlayerMovement>() != null)
                 {
-
+                    hit.collider.gameObject.GetComponent<PlayerMovement>().SetOnIce(true);
                 }
-                else if(hit.collider.gameObject.GetComponent<RayonScript>() != null)
+                if(hit.collider.gameObject.GetComponent<RayonScript>() != null)
                 {
-
+                    gameObject.GetComponent<Inventory>().AddInventory(hit.collider.gameObject.GetComponent<RayonScript>().GetItem());
                 }
             }
             Invoke(nameof(ResetAttack), attackCooldown);
@@ -116,6 +116,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isAttacking && canMove)
         {
+            print("get item");
             isAttacking = true;
 
             RaycastHit hit;
@@ -124,11 +125,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (hit.collider.gameObject.GetComponent<PlayerMovement>() != null)
                 {
-
+                    hit.collider.gameObject.GetComponent<PlayerMovement>().SetOnIce(true);
                 }
                 else if (hit.collider.gameObject.GetComponent<RayonScript>() != null)
                 {
-
+                    print("get item");
+                    gameObject.GetComponent<Inventory>().AddInventory(hit.collider.gameObject.GetComponent<RayonScript>().GetItem());
                 }
             }
             Invoke(nameof(ResetAttack), attackCooldown);
