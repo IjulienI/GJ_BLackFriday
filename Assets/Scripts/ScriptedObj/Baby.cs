@@ -13,14 +13,17 @@ public class Baby : MonoBehaviour
     [SerializeField] private float minTime;
     [SerializeField] private float maxTime;
     [SerializeField] private float malusTime;
+    [SerializeField] private AudioClip cryBaby;
 
+    private AudioSource audioSource;
     private PlayerMovement playerTouched;
     private float timeBeforeDestroy;
 
     private void Start()
     {
         timeBeforeDestroy = Random.Range(minTime, maxTime);
-        Invoke(nameof(DestroyObject), timeBeforeDestroy);
+        Invoke(nameof(DestroyObject), timeBeforeDestroy); 
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -65,6 +68,9 @@ public class Baby : MonoBehaviour
             playerTouched.BabyEvent(false);
             CancelInvoke(nameof(DestroyObject));
         }
+        audioSource.clip = cryBaby;
+        audioSource.volume = 0.1f;
+        audioSource.Play();
         playerTouched = player.GetComponent<PlayerMovement>();
         speed = 0;
         transform.SetParent(playerTouched.transform.GetChild(0).transform);
@@ -76,7 +82,8 @@ public class Baby : MonoBehaviour
     public void DestroyObject()
     {
         Destroy(gameObject);
-        if(playerTouched != null)
+        audioSource.Stop();
+        if (playerTouched != null)
         {
             playerTouched.BabyEvent(false);
         }

@@ -12,6 +12,9 @@ public class SlideFloor : MonoBehaviour
     private bool start = true;
     private float lifeTime;
     private BoxCollider boxCollider;
+    [SerializeField] private AudioClip freeze;
+
+    private AudioSource audioSource;
 
     private void Start()
     {
@@ -20,6 +23,7 @@ public class SlideFloor : MonoBehaviour
         boxCollider.enabled = false;
         lifeTime = Random.Range(minTimeLife,maxTimeLife);
         Invoke(nameof(StartDestroy), lifeTime);
+        audioSource = GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -45,6 +49,9 @@ public class SlideFloor : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            audioSource.clip = freeze;
+            audioSource.volume = 0.2f;
+            audioSource.Play();
             playerMovement = other.GetComponent<PlayerMovement>();
             if (!playerMovement.GetIceResistance())
             {

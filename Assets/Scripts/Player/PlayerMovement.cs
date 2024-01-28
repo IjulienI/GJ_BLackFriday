@@ -1,6 +1,4 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,7 +14,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private ParticleSystem[] driveParticle;
     [SerializeField] private float attackCooldown = 0.4f;
     [SerializeField] private bool iceResistance;
+    [SerializeField] private AudioClip punch, impact;
 
+    private AudioSource audioSource;
     private Vector2 input;
     private Rigidbody rb;
     private bool onIce, isAttacking, isBoosted, canMove = true;
@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         driveParticle[0] = transform.GetChild(0).GetComponent<ParticleSystem>();
         driveParticle[1] = transform.GetChild(1).GetComponent<ParticleSystem>();
         driveParticle[2] = transform.GetChild(2).GetComponent<ParticleSystem>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void OpenList()
@@ -81,13 +82,14 @@ public class PlayerMovement : MonoBehaviour
             {
                 if(hit.collider.gameObject.GetComponent<PlayerMovement>() != null)
                 {
-
                 }
                 else if(hit.collider.gameObject.GetComponent<RayonScript>() != null)
                 {
-
                 }
             }
+            audioSource.clip = punch;
+            audioSource.volume = 0.1f;
+            audioSource.Play();
             Invoke(nameof(ResetAttack), attackCooldown);
         }
     }
@@ -109,8 +111,10 @@ public class PlayerMovement : MonoBehaviour
         else if(collision.gameObject.tag != "floor")
         {
             Instantiate(hitParticles[1], transform.position + transform.forward, Quaternion.identity);
+            audioSource.clip = impact;
+            audioSource.volume = 0.02f;
+            audioSource.Play();
         }
-
     }
     public void AttackRight()
     {
@@ -124,13 +128,14 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (hit.collider.gameObject.GetComponent<PlayerMovement>() != null)
                 {
-
                 }
                 else if (hit.collider.gameObject.GetComponent<RayonScript>() != null)
                 {
-
                 }
             }
+            audioSource.clip = punch;
+            audioSource.volume = 0.1f;
+            audioSource.Play();
             Invoke(nameof(ResetAttack), attackCooldown);
         }
     }
