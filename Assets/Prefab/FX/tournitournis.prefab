@@ -27,9 +27,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 57406473398893278}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.65790415, y: -0.28585288, z: -0.21802114, w: 0.661753}
+  m_LocalRotation: {x: -0.65790635, y: -0.28584614, z: -0.21801756, w: 0.6617549}
   m_LocalPosition: {x: 7.01, y: -0.29, z: -1.01}
-  m_LocalScale: {x: 0.54922, y: 0.54922, z: 0.54922}
+  m_LocalScale: {x: 0.7987463, y: 0.7987463, z: 0.7019941}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8399001113062132527}
@@ -52,7 +52,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -120,7 +120,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 5
-      minScalar: 2
+      minScalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2588,7 +2588,7 @@ ParticleSystem:
     magnitude:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4881,7 +4881,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.04089394, y: 0.16357803, z: 0.23906025, w: 0.9562531}
   m_LocalPosition: {x: 0.06316715, y: 0, z: 0.12990947}
-  m_LocalScale: {x: 0.55806, y: 0.55806, z: 0.55806}
+  m_LocalScale: {x: 0.89166725, y: 0.89166725, z: 0.89166725}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1697042430779210485}
@@ -4902,7 +4902,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -9719,7 +9719,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.02596679, y: 0.065317534, z: -0.2280772, w: 0.97110254}
   m_LocalPosition: {x: -0.01, y: -0, z: 0.06}
-  m_LocalScale: {x: 0.3636, y: 0.3636, z: 0.3636}
+  m_LocalScale: {x: 0.9817629, y: 0.9817629, z: 0.9817629}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1697042430779210485}
@@ -9740,7 +9740,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
