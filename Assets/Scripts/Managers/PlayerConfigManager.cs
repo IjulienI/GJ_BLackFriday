@@ -124,7 +124,7 @@ public class PlayerConfigManager : MonoBehaviour
         {
             loadingScreenAppeared = true;
             Instantiate(LSRef, transform);
-            int randomLevel = Random.Range(2, 3);
+            int randomLevel = Random.Range(2, 4);
             SceneManager.LoadScene(randomLevel);
 
             SceneManager.UnloadSceneAsync("PlayerSelection");

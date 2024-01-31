@@ -92,9 +92,9 @@ public class PlayerMovement : MonoBehaviour
                     gameObject.GetComponent<Inventory>().AddInventory(hit.collider.gameObject.GetComponent<RayonScript>().GetItem());
                 }
             }
-            //audioSource.clip = punch;
-            //audioSource.volume = 0.1f;
-            //audioSource.Play();
+            audioSource.clip = punch;
+            audioSource.volume = 0.1f;
+            audioSource.Play();
             Invoke(nameof(ResetAttack), attackCooldown);
         }
     }
@@ -116,9 +116,9 @@ public class PlayerMovement : MonoBehaviour
         else if(collision.gameObject.tag != "floor")
         {
             Instantiate(hitParticles[1], transform.position + transform.forward, Quaternion.identity);
-            //audioSource.clip = impact;
-            //audioSource.volume = 0.02f;
-            //audioSource.Play();
+            audioSource.clip = impact;
+            audioSource.volume = 0.02f;
+            audioSource.Play();
         }
     }
     public void AttackRight()
@@ -137,13 +137,12 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else if (hit.collider.gameObject.GetComponent<RayonScript>() != null)
                 {
-                    print("get item");
                     gameObject.GetComponent<Inventory>().AddInventory(hit.collider.gameObject.GetComponent<RayonScript>().GetItem());
                 }
             }
-            //audioSource.clip = punch;
-            //audioSource.volume = 0.1f;
-            //audioSource.Play();
+            audioSource.clip = punch;
+            audioSource.volume = 0.1f;
+            audioSource.Play();
             Invoke(nameof(ResetAttack), attackCooldown);
         }
     }

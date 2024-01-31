@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,7 +19,7 @@ public class PlayerListScript : MonoBehaviour
     private List<GameObject> itemInStore = new List<GameObject>();
     private List<GameObject> itemInList = new List<GameObject>();
     private List<GameObject> ItemGet = new List<GameObject>();
-    private bool displayList;
+    private bool displayList, newList;
 
 
     private void Start()
@@ -62,10 +63,6 @@ public class PlayerListScript : MonoBehaviour
 
     public bool ListContain(GameObject actualObject)
     {
-        if (itemInList == ItemGet)
-        {
-            MakeNewList();
-        }
         if (itemInList.Contains(actualObject) && !ItemGet.Contains(actualObject))
         {
             ItemGet.Add(actualObject);
@@ -86,6 +83,23 @@ public class PlayerListScript : MonoBehaviour
             {
                 listLines[i].GetComponent<Image>().enabled = true; break;
             }
+        }
+        int lineEnable = 0;
+        for (int i = 0; i < listLines.Length; i++)
+        {
+            if (!listLines[i].GetComponent<Image>().isActiveAndEnabled)
+            {
+                break;
+            }
+            else
+            {
+                lineEnable++;
+            }
+        }
+        if (lineEnable == listLines.Length && !newList)
+        {
+            newList = true;
+            MakeNewList();
         }
     }
 
@@ -119,5 +133,12 @@ public class PlayerListScript : MonoBehaviour
             }
             listTexts[i].SetText(itemInStore[randomItem].GetComponent<ItemScript>().GetName());
         }
+        Invoke(nameof(ResetNewList), 3);
+        DisplayList();
+    }
+
+    private void ResetNewList()
+    {
+        newList = false;
     }
 }

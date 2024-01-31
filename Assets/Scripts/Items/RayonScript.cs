@@ -6,6 +6,7 @@ public class RayonScript : MonoBehaviour
 {
     [SerializeField] private GameObject itemShelf;
     [SerializeField] private GameObject[] itemHolder;
+    [SerializeField] private float scale = 0.1f;
 
     private void Start()
     {
@@ -13,7 +14,7 @@ public class RayonScript : MonoBehaviour
         {
             itemHolder[i].GetComponent<MeshFilter>().mesh = itemShelf.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh;
             itemHolder[i].GetComponent<MeshRenderer>().material = itemShelf.transform.GetChild(0).GetComponent<MeshRenderer>().sharedMaterial;
-            itemHolder[i].GetComponent<MeshFilter>().transform.localScale = new Vector3 (0.1f, 0.1f, 0.1f);
+            itemHolder[i].GetComponent<MeshFilter>().transform.localScale = new Vector3(scale, scale, scale);
         }
     }
     public GameObject GetItem()

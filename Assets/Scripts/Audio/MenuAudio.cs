@@ -26,7 +26,6 @@ public class MenuAudio : MonoBehaviour
         if(destroy)
         {
             Destroy(gameObject);
-            Debug.Log("Destroy");
         }
     }
 }

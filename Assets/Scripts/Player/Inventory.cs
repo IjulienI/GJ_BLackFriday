@@ -1,14 +1,21 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private GameObject pickItemEffect;
+    [SerializeField] private GameObject playerCanvas;
     [SerializeField] private int inventorySize;
     private List<GameObject> inventory = new List<GameObject>();
 
     private int score = 0;
+    private TextMeshProUGUI inventoryText;
 
+    private void Start()
+    {
+        inventoryText = playerCanvas.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "item")
@@ -28,14 +35,31 @@ public class Inventory : MonoBehaviour
                 if (PlayerListScript.Instance.ListContain(inventory[i]))
                 {
                     score += inventory[i].GetComponent<ItemScript>().GetPoints();
+                    print(inventory[i].name);
                 }
                 else
                 {
                     score += 2;
+                    print(+2);
                 }
-
-                inventory.Remove(inventory[i]);
+                
             }
+            inventory.Clear();
+        }
+    }
+
+    private void Update()
+    {
+
+        if(inventory.Count > 0)
+        {
+            playerCanvas.transform.LookAt(Camera.main.transform.position);
+            playerCanvas.SetActive(true);
+            inventoryText.text = inventory.Count + "/" + inventorySize;
+        }
+        else
+        {
+            playerCanvas.SetActive(false);
         }
     }
 

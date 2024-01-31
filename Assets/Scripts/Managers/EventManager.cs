@@ -37,7 +37,6 @@ public class EventManager : MonoBehaviour
             eventTemp = events[Random.Range(0, events.Count)];
             if (eventTemp != lastEvent)
             {
-                Debug.Log(eventTemp.name);
                 if (eventTemp.name == "EarthQuakeEvent")
                 {
                     if (GameManager.Instance.CanEarthQuake())
