@@ -119,6 +119,8 @@ public class PlayerListScript : MonoBehaviour
 
     private void MakeNewList()
     {
+        itemInList.Clear();
+        ItemGet.Clear();
         for (int i = 0; i < listTexts.Length; i++)
         {
             int randomItem = Random.Range(0, itemInStore.Count);
@@ -131,6 +133,9 @@ public class PlayerListScript : MonoBehaviour
             {
                 itemInList.Add(itemInStore[randomItem]);
             }
+
+
+            listLines[i].GetComponent<Image>().enabled = false;
             listTexts[i].SetText(itemInStore[randomItem].GetComponent<ItemScript>().GetName());
         }
         Invoke(nameof(ResetNewList), 3);

@@ -69,7 +69,7 @@ public class PlayerConfigManager : MonoBehaviour
                     }
                    
                 }
-                if(ValidPlayer >= 1 && !loadingScreenAppeared) 
+                if(ValidPlayer >= 2 && !loadingScreenAppeared) 
                 {
                     CountDownStart();
                     
@@ -103,7 +103,6 @@ public class PlayerConfigManager : MonoBehaviour
 
     public void HandlePlayerQuit(int index)
     {
-        //playerConfigs[index] = null;
         playerConfigs.RemoveAt(index);
     }
 

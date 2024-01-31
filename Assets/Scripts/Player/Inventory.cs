@@ -51,16 +51,16 @@ public class Inventory : MonoBehaviour
     private void Update()
     {
 
-        if(inventory.Count > 0)
-        {
-            playerCanvas.transform.LookAt(Camera.main.transform.position);
+        //if(inventory.Count > 0)
+        //{
+            playerCanvas.transform.rotation = Quaternion.Euler(Vector3.forward);
             playerCanvas.SetActive(true);
             inventoryText.text = inventory.Count + "/" + inventorySize;
-        }
-        else
-        {
-            playerCanvas.SetActive(false);
-        }
+        //}
+        //else
+        //{
+        //    playerCanvas.SetActive(false);
+        //}
     }
 
     public void HitEvent()
