@@ -28,12 +28,10 @@ public class Inventory : MonoBehaviour
                 if (PlayerListScript.Instance.ListContain(inventory[i]))
                 {
                     score += inventory[i].GetComponent<ItemScript>().GetPoints();
-                    print(inventory[i].GetComponent<ItemScript>().GetPoints());
                 }
                 else
                 {
                     score += 2;
-                    print(2);
                 }
 
                 inventory.Remove(inventory[i]);
@@ -48,16 +46,17 @@ public class Inventory : MonoBehaviour
         {
             RemoveInventory(i, true);
         }
+
     }
 
     public void AddInventory(GameObject item)
     {
-        inventory.Add(item);
-        for (int i = 0;i < inventory.Count; i++)
+        if (inventory.Count < inventorySize)
         {
-            print(inventory[i]);
+            inventory.Add(item);
         }
     }
+
     public void RemoveInventory(int item, bool dropItem)
     {
         if(dropItem)

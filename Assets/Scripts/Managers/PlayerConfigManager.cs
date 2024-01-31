@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.TextCore.Text;
+using Random = UnityEngine.Random;
 
 public class PlayerConfigManager : MonoBehaviour
 {
@@ -29,7 +28,7 @@ public class PlayerConfigManager : MonoBehaviour
         else 
         {
             Instance = this;
-            DontDestroyOnLoad(Instance);    
+            DontDestroyOnLoad(Instance);
         }
     }
 
@@ -68,16 +67,18 @@ public class PlayerConfigManager : MonoBehaviour
                     {
                         ValidPlayer++;
                     }
+                   
                 }
-                print(ValidPlayer);
-                if(ValidPlayer >= 2 && !loadingScreenAppeared) 
+                if(ValidPlayer >= 1 && !loadingScreenAppeared) 
                 {
                     CountDownStart();
+                    
                 }
             }
             else
             {
                 CancelInvoke(nameof(CountDownStart));
+                loadingScreenAppeared = false;
                 countDownText.text = "";
                 countDown = 4;
             }
@@ -94,6 +95,7 @@ public class PlayerConfigManager : MonoBehaviour
     {
         if (!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex))
         {
+            //Debug.Log("Playe Join " + pi.playerIndex);
             pi.transform.SetParent(transform);
             playerConfigs.Insert(pi.playerIndex, new PlayerConfiguration(pi));
         }
@@ -101,8 +103,8 @@ public class PlayerConfigManager : MonoBehaviour
 
     public void HandlePlayerQuit(int index)
     {
-        Debug.Log("Playe quit " + index);
-        playerConfigs[index] = null;
+        //playerConfigs[index] = null;
+        playerConfigs.RemoveAt(index);
     }
 
     private void CountDownStart()
@@ -118,18 +120,20 @@ public class PlayerConfigManager : MonoBehaviour
             countDownText.text = countDown.ToString();
             Invoke(nameof(CountDownStart), 1);
         }
-        else if (countDown == 0)
+        else if (countDown == 0 && allPlayersReady)
         {
             loadingScreenAppeared = true;
             Instantiate(LSRef, transform);
             int randomLevel = Random.Range(2, 3);
             SceneManager.LoadScene(randomLevel);
 
-            SceneManager.UnloadSceneAsync("MainMenu 1");
+            SceneManager.UnloadSceneAsync("PlayerSelection");
         }
         else
         {
             loadingScreenAppeared = false;
+            countDownText.text = "";
+            countDown = 4;
             CancelInvoke(nameof(CountDownStart));
         }
 

@@ -84,7 +84,7 @@ public class PlayerListScript : MonoBehaviour
         {
             if (itemInList[i] == actualObject)
             {
-                listLines[i].SetActive(true); break;
+                listLines[i].GetComponent<Image>().enabled = true; break;
             }
         }
     }

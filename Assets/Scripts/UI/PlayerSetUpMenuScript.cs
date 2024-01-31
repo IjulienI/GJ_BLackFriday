@@ -15,10 +15,12 @@ public class PlayerSetUpMenuScript : MonoBehaviour
     private List<string> old = new List<string> { "Sunday", "Marie-Francoise", "Danielle", "Anicette", "Melo", "Gaston", "Maurice", "Rene", "Albert", "Georges", "Henri", "Leon", "Marcel", "Roger", "Andre", "Raymond", "Louis", "Emile", "Paul", "Bernard", "Gilbert", "Antoine", "Victor", "Francois", "Jacques", "Edouard", "Fernand", "Lucien", "Michel", "Roland", "Gustave", "Jules", "Armand", "Pierre", "Charles", "Robert", "Jean", "Yves", "Jean-Pierre", "Hubert", "Claude", "Alain", "Serge", "Noel", "Michel", "Romain", "Gaston", "Henri", "Maurice", "Leon", "Paul", "Robert", "Jacques", "Rene", "Andre", "Lucien", "Georges", "Bernard", "Roger", "Albert", "Emile", "Gilbert", "Antoine", "Raymond", "Francois", "Victor", "Yves", "Armand", "Jules", "Louis", "Michel", "Charles", "Roland", "Fernand", "Jean", "Claude", "Gustave", "Hubert", "Jean-Pierre", "Noel", "Romain", "Alain", "Pierre", "Serge", "Rene", "Marcel", "Paul", "Andre", "Maurice", "Robert", "Leon", "Jacques", "Georges", "Bernard", "Lucien", "Roger", "Antoine", "Raymond", "Victor", "Francois", "Yves", "Armand", "Jules", "Louis", "Michel", "Charles", "Roland", "Fernand", "Jean", "Claude", "Gustave", "Hubert", "Jean-Pierre", "Noel", "Romain", "Alain", "Pierre", "Serge", "Germaine", "Simone", "Marguerite", "Yvonne", "Madeleine", "Marie", "Suzanne", "Denise", "Monique", "Paulette", "Colette", "Therese", "Jacqueline", "Raymonde", "Lucienne", "Elisabeth", "Odette", "Andree", "Ginette", "Helene", "Juliette", "Josette", "Annie", "Francoise", "Solange", "Claudine", "Renee", "Lea", "Gilberte", "Aline", "Alice", "Margot", "Juliette", "Leonie", "Josiane", "Evelyne", "Rosalie", "Irene", "Charlotte", "Gertrude", "Emilie", "Rachel", "Elodie", "Isabelle", "Monique", "Suzanne", "Therese", "Gilberte", "Huguette", "Margot", "Andree", "Paulette", "Gilberte", "Odile", "Marguerite", "Simone", "Yvette", "Marthe", "Leonne", "Helene", "Denise", "Marcelle", "Elise", "Lise", "Lucette", "Rose", "Clemence", "Aurore", "Clarisse", "Antoinette", "Alice", "Lucile", "Gertrude", "Lorraine", "Laurette", "Jacqueline", "Irene", "Brigitte", "Leontine", "Cecile", "Emilienne", "Edith", "Sophie", "Francoise", "Bernadette", "Helene", "Rosalie", "Marguerite", "Henriette", "Laurence", "Blanche", "Solange", "Clemence", "Noemie", "Eva", "Adrienne", "Isabelle", "Margot", "Gertrude", "Juliette" };
     private int playerIndex, characterSelected;
     private float ignoreInputTime = 0.5f;
-    private bool inputEnable, playerReady;
+    private bool inputEnable, playerReady, hasQuit;
+    private PlayerInput pi;
 
-    public void SetPlayerIndex(PlayerInput pi) 
+    public void SetPlayerIndex(PlayerInput newpi) 
     {
+        pi = newpi;
         int oldIndex = Random.Range(0, old.Count);
         oldName.text = old[oldIndex];
         playerIndex = pi.playerIndex;
@@ -57,7 +59,14 @@ public class PlayerSetUpMenuScript : MonoBehaviour
     {
         if (!inputEnable || playerReady) { return; }
 
-            if(characterSelected >= characterUI.Length-1)
+        if (hasQuit)
+        {
+            hasQuit = false;
+            PlayerConfigManager.Instance.HandlePlayerJoin(pi);
+        }
+        else
+        {
+            if (characterSelected >= characterUI.Length - 1)
             {
                 characterSelected = 0;
             }
@@ -66,47 +75,72 @@ public class PlayerSetUpMenuScript : MonoBehaviour
                 characterSelected += 1;
             }
 
-        characterImage.sprite = characterUI[characterSelected];
-        PlayerConfigManager.Instance.SetPlayerCharacter(playerIndex, characterSelected);
+            characterImage.sprite = characterUI[characterSelected];
+            PlayerConfigManager.Instance.SetPlayerCharacter(playerIndex, characterSelected);
+        }
     }
     public void SelectCharacterRight()
     {
         if (!inputEnable || playerReady) { return; }
 
-        if (characterSelected <= 0)
+        if (hasQuit)
         {
-            characterSelected = characterUI.Length - 1;
+            hasQuit = false;
+            PlayerConfigManager.Instance.HandlePlayerJoin(pi);
         }
         else
         {
-            characterSelected -= 1;
+            if (characterSelected <= 0)
+            {
+                characterSelected = characterUI.Length - 1;
+            }
+            else
+            {
+                characterSelected -= 1;
+            }
+            characterImage.sprite = characterUI[characterSelected];
+            PlayerConfigManager.Instance.SetPlayerCharacter(playerIndex, characterSelected);
         }
-        characterImage.sprite = characterUI[characterSelected];
-        PlayerConfigManager.Instance.SetPlayerCharacter(playerIndex, characterSelected);
+
     }
 
     public void ReadyPlayer()
     {
-            if (!inputEnable) { return; }
-
+        if (!inputEnable) { return; }
+        if(hasQuit)
+        {
+            hasQuit = false;
+            PlayerConfigManager.Instance.HandlePlayerJoin(pi);
+        }
+        else
+        {
             playerReady = true;
             PlayerConfigManager.Instance.ReadyPlayer(playerIndex, true);
+        }
     }
 
     public void NotReady()
     {
         if (!inputEnable) { return; }
 
-        if(playerReady)
+        if (hasQuit)
         {
-            playerReady = false;
-            PlayerConfigManager.Instance.ReadyPlayer(playerIndex, false);
+            hasQuit = false;
+            PlayerConfigManager.Instance.HandlePlayerJoin(pi);
         }
         else
         {
-            PlayerConfigManager.Instance.HandlePlayerQuit(playerIndex);
-            gameObject.SetActive(false);
+            if (playerReady)
+            {
+                playerReady = false;
+                PlayerConfigManager.Instance.ReadyPlayer(playerIndex, false);
+            }
+            else
+            {
+                hasQuit = true;
+                PlayerConfigManager.Instance.HandlePlayerQuit(playerIndex);
+                gameObject.SetActive(false);
+            }
         }
-
     }
 }
