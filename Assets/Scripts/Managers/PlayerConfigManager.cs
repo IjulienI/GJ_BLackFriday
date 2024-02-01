@@ -95,7 +95,6 @@ public class PlayerConfigManager : MonoBehaviour
     {
         if (!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex))
         {
-            //Debug.Log("Playe Join " + pi.playerIndex);
             pi.transform.SetParent(transform);
             playerConfigs.Insert(pi.playerIndex, new PlayerConfiguration(pi));
         }
