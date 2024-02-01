@@ -113,7 +113,8 @@ public class PlayerListScript : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("MainMenu 1");
+            //SceneManager.LoadScene("MainMenu 1");
+            EndGameScript.instance.On();
         }
     }
 
