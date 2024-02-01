@@ -89,4 +89,9 @@ public class Inventory : MonoBehaviour
         }
         inventory.Remove(inventory[item]);
     }
+
+    public int GetScore()
+    {
+        return score;
+    }
 }
